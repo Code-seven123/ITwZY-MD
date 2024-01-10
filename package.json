@@ -6,11 +6,16 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "restore": "node restore.js"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.485.0",
+    "@aws-sdk/lib-storage": "^3.485.0",
     "@hapi/boom": "^10.0.1",
+    "chokidar": "^3.5.3",
     "nodemon": "^3.0.2",
+    "path": "^0.12.7",
     "pino": "^8.17.2",
     "qrcode-terminal": "^0.12.0"
   },
