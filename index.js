@@ -137,6 +137,7 @@ async function startItwzy() {
     }
     await mob.askForOTP()
   }
+  return conn
 }
 
 startItwzy()
