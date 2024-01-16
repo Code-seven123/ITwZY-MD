@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const commands = []
-logger.info(`${commands.length} command attacker`)
+
 const foldersPath = path.join(__dirname, 'plugins')
 const commandFolders = fs.readdirSync(foldersPath)
 
@@ -21,5 +21,7 @@ for (const folder of commandFolders) {
     commands.push(command)
   }
 }
-console.log(commands)
+
+logger.info(`${commands.length} command attacker`)
+//console.log(commands)
 export default commands

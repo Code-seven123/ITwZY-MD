@@ -12,15 +12,15 @@ const handler = async (conn, { id }, m) => {
             + 'END:VCARD'
     await conn.sendMessage(id, { 
       contacts: { 
-            displayName: owner.name, 
-            contacts: [{ vcard }] 
+        displayName: owner.name, 
+        contacts: [{ vcard }] 
       }
-    })
+    }, { quoted: m })
   }
 }
 
 handler.cmd = 'owner'
 handler.desc = 'owner list'
 handler.category = 'utility'
-
+handler.args = null
 export default handler
