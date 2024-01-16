@@ -18,6 +18,18 @@ const question = (text) => new Promise(resolve => rl.question(text, resolve))
 const usePairingCode = process.argv.includes('--use-pairing-code')
 const useMobile = process.argv.includes('--mobile')
 
+if(!(fs.existsSync('./sessions'))) {
+  console.log('sessions not found')
+  fs.mkdir('./sessions', { recursive: true }, (err) => {
+    if (err) {
+      console.error(`Gagal membuat folder: `, err)
+    } else {
+      console.log(`Folder "./sessions" berhasil dibuat.`)
+    }
+  })
+}
+
+
 async function startItwzy() {
   conn.ev.on('connection.update', async ( update ) => {
     const { connection, lastDisconnect } = update

@@ -13,16 +13,16 @@ function fakeName() {
   return `${randomInRange}.mp4`
 }*/
 
-const handler = async (conn, { user, id, args }, m) => {
+const handler = async (conn, { id, args }, m) => {
   const url = args[0]
   const data = await snapsave(url)
-/*  const path = join(__dirname, '../../temp/' + fakeName())
+  /*  const path = join(__dirname, '../../temp/' + fakeName())
   console.log(path)*/
   for ( const video of data ){
     await conn.sendMessage(id, {
-          text: 'your link video \n' + video.url
-        }, { quoted: m })
-/*    const writer = fs.createWriteStream(path)
+      text: 'your link video \n' + video.url
+    }, { quoted: m })
+    /*    const writer = fs.createWriteStream(path)
     const res = await Axios({
       url: video.url,
       method: 'GET',
