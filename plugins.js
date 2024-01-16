@@ -1,12 +1,16 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs'
+import MAIN_LOGGER from './lib/logger.js'
+
+
+const logger = MAIN_LOGGER.child({ a: 'property' })
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const commands = []
-
+logger.info(`${commands.length} command attacker`)
 const foldersPath = path.join(__dirname, 'plugins')
 const commandFolders = fs.readdirSync(foldersPath)
 
