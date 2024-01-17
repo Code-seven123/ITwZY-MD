@@ -62,4 +62,4 @@ npm run pairingCode
 ## • options
 ### --notCache
 
-`--notCache` functions to stop the scheduled time, which is 32 days or 86400000 milliseconds
+`--notCache` functions to stop the scheduled time, which is 24 days or 86400000 milliseconds
