@@ -1,6 +1,5 @@
 node_modules
 yarn-error.log
 test.js
-sessions/
-!sessions/•ITwZY•
-trmp/
+sessions
+.cache
