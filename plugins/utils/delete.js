@@ -1,7 +1,7 @@
-const handler = async (conn, { user, id, reply }, m) => {
-  await conn.sendMessage(id, { text: 'deleting message.'})
-  await conn.sendMessage(id, { delete: reply })
-
+const handler = async (conn, { id, reply }, m) => {
+  await conn.sendMessage(id, { text: 'deleting message.'}, { quoted: m })
+  const msg = await conn.readMessages([reply])
+  await conn.sendMessage(id, { delete: msg })
 }
 
 handler.cmd = 'del'

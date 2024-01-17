@@ -8,8 +8,7 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
-    "pairingCode": "node index.js --use-pairing-code",
-    "mobile": "node index.js --mobile"
+    "pairingCode": "node index.js --use-pairing-code"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
@@ -17,6 +16,8 @@
     "@hapi/boom": "^10.0.1",
     "axios": "^1.6.5",
     "eslint": "^8.56.0",
+    "fs-extra": "^11.2.0",
+    "is-online": "^10.0.0",
     "libphonenumber-js": "^1.10.53",
     "moment": "^2.30.1",
     "node-cache": "^5.1.2",
