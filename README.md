@@ -10,31 +10,31 @@
 | Facebook | ✓ |
 | Instagram | ✓ |
 
-## Instalasi
+## • Instalasi
 
-### Install/Clone proyek
+### - Install/Clone proyek
 
 ```bash
 git clone https://github.com/Code-seven123/ITwZY-MD.git
 ```
 
-### Change directory
+### - Change directory
 ```bash
 cd ITwZY-MD
 ```
 
-### Install Dependencies
-#### Npm
+## •Install Dependencies
+### - Npm
 ```bash
 npm install
 ```
-#### Yarn
+### - Yarn
 ```bash
 yarn install
 ```
 
-### Running Applications
-#### Yarn
+## • Running Applications
+### - Yarn
 #### login from QR code
 ```bash
 yarn start
@@ -44,7 +44,7 @@ yarn start
 yarn pairingCode
 ```
 
-#### Npm
+### - Npm
 #### login from QR code
 ```bash
 npm run start
@@ -54,7 +54,7 @@ npm run start
 npm run pairingCode
 ```
 
-### options
-##### --notCache
+## • options
+### --notCache
 
 `--notCache` functions to stop the scheduled time, which is 32 days or 86400000 milliseconds
