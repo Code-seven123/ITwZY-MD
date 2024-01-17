@@ -1,6 +1,8 @@
 # Whatsapp Bot - Node Js
 ## ITwZY-MD
 
+[![Repo Updated Badge](https://badges.strrl.dev/updated/Code-seven123/ITwZY-MD)](https://badges.strrl.dev)
+
 ## • Features  Bot
 
  Download
