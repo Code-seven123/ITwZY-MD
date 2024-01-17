@@ -2,6 +2,8 @@
 ## ITwZY-MD
 
 [![Repo Updated Badge](https://badges.strrl.dev/updated/Code-seven123/ITwZY-MD)](https://badges.strrl.dev)
+![GitHub contributors](https://img.shields.io/github/contributors/Code-seven123/ITwZY-MD)
+
 
 ## • Features  Bot
 
