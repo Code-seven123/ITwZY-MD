@@ -2,7 +2,6 @@ import isOnline from 'is-online'
 import fs from 'fs'
 import MAIN_LOGGER from './lib/logger.js'
 import process from 'process'
-import { exec } from 'child_process'
 const logger = MAIN_LOGGER.child({})
 
 const online = await isOnline()

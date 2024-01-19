@@ -5,6 +5,9 @@ import process from 'process'
 import readline from 'readline'
 import fs from 'fs'
 import fsX from 'fs-extra'
+import MAIN_LOGGER from './lib/logger.js'
+
+const logger = MAIN_LOGGER.child({})
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (text) => new Promise(resolve => rl.question(text, resolve))
