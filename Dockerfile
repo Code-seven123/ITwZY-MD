@@ -1,6 +1,12 @@
 FROM node:latest
 
-ENV TZ=Asia/Jakarta
+COPY package*.json ./
+
 RUN npm install
 
-CMD ["node", "index.js"]
+COPY . .
+
+ENV TZ=Asia/Jakarta
+
+
+CMD ["node", "pairingCode"]
