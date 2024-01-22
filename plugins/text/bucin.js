@@ -5,7 +5,7 @@ const handler = async (conn, { id }, m) => {
   await conn.sendMessage(id, { text: text }, { quoted: m })
 }
 
-handler.cmd = 'bucin'
+handler.cmd = /^(bucin)$/i
 handler.desc = 'kata kata bucin bot'
 handler.category = 'text'
 handler.args = null

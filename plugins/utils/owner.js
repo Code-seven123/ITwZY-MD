@@ -19,7 +19,7 @@ const handler = async (conn, { id }, m) => {
   }
 }
 
-handler.cmd = 'owner'
+handler.cmd = /^(admin|owner)$/i
 handler.desc = 'owner list'
 handler.category = 'utility'
 handler.args = null

@@ -4,7 +4,7 @@ const handler = async (conn, { id, reply }, m) => {
   await conn.sendMessage(id, { delete: msg })
 }
 
-handler.cmd = 'del'
+handler.cmd = /^(del|delete|hapus)$/i
 handler.desc = 'delete message'
 handler.category = 'utility'
 handler.args = null

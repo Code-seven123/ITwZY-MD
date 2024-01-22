@@ -42,7 +42,7 @@ const handler = async (conn, { id, args }, m) => {
   }
 }
 
-handler.cmd = 'snap'
+handler.cmd = /^(snapsave|fb|ig|snap)$/i
 handler.desc = 'FB & IG downloader'
 handler.category = 'download'
 handler.args = '<url>'
