@@ -7,12 +7,15 @@
 
 ## • Features  Bot
 
- Download
-
-| Applications | Status |
+| Fiture | Status |
 | ------ | ---- |
 | Facebook | ✓ |
 | Instagram | ✓ |
+| Admin | ++ |
+| lyrics | ✓ |
+| bucin text (ID) | ✓ |
+
+
 
 ## • Instalasi
 
