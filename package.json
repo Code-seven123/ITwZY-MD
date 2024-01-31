@@ -8,12 +8,13 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
-    "pairingCode": "node index.js --use-pairing-code"
+    "pairingCode": "node  --es-module-specifier-resolution=node index.js --use-pairing-code"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
     "@bochilteam/scraper-sosmed": "^1.0.5",
     "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.6.0",
     "axios": "^1.6.5",
     "eslint": "^8.56.0",
     "fs-extra": "^11.2.0",
@@ -27,8 +28,5 @@
     "pino": "^8.17.2",
     "pino-pretty": "^10.3.1",
     "qrcode-terminal": "^0.12.0"
-  },
-  "devDependencies": {
-    "@whiskeysockets/baileys": "^6.5.0"
   }
 }

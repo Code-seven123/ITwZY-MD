@@ -2,17 +2,11 @@ import { DisconnectReason } from '@whiskeysockets/baileys'
 import conn from './lib/sock.js'
 import { Boom } from '@hapi/boom'
 import process from 'process'
-import readline from 'readline'
 import fs from 'fs'
 import fsX from 'fs-extra'
 import MAIN_LOGGER from './lib/logger.js'
 
 const logger = MAIN_LOGGER.child({})
-
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
-const question = (text) => new Promise(resolve => rl.question(text, resolve))
-
-const usePairingCode = process.argv.includes('--use-pairing-code')
 const temporarily = process.argv.includes('--notCache')
 
 if(!(fs.existsSync('./.cache'))) {
@@ -74,12 +68,6 @@ async function startItwzy() {
       console.log('opened connection')
     }
   })
-  if(usePairingCode && !conn.authState.creds.registered) {
-    const phoneNumber = await question('Please enter your mobile phone number:\n')
-    const code = await conn.requestPairingCode(phoneNumber.replace(/[^0-9]/g, ''))
-    console.log('your phone number is ', phoneNumber.replace(/[^0-9]/g, ''))
-    console.log(`Pairing code: ${code.match(/.{1,4}/g).join('-')}`)
-  }
   return conn
 }
 
