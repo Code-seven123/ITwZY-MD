@@ -1,14 +1,11 @@
-import {   lyrics } from '@bochilteam/scraper'
+import { lyrics } from '@bochilteam/scraper'
 
 
-const handler = async (conn, { user, id, args }, m) => {
+const handler = async (conn, { id, args }, m) => {
   const text = args.join(' ')
   const data = await lyrics(text)
 	
-	const result = `*Judul Lagu* : ${data.title}\n`
-						  	+ `*Author* : ${data.author}\n`
-						  	+ `*link* : ${data.link}`
-						  	+ `\n\n Lyrics : \n ${data.lyrics}`
+  const result = `*Judul Lagu* : ${data.title}\n` + `*Author* : ${data.author}\n` + `*link* : ${data.link}` + `\n\n Lyrics : \n ${data.lyrics}`
   
   await conn.sendMessage(id, { text: result }, { quoted: m })
 }

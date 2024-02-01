@@ -38,7 +38,7 @@ async function startItwzy() {
     const { connection, lastDisconnect } = update
     if(connection === 'close') {
       const reason = new Boom(lastDisconnect?.error)?.output.statusCode
-
+      console.log(DisconnectReason)
       if (reason === DisconnectReason.badSession) {
         console.log('Bad Session File, Please Delete Session and Scan Again')
         process.exit()

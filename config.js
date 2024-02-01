@@ -9,7 +9,7 @@ global.owner = [
     number: '6288222358226'
   }
 ]
-global.levelLog = 'error'
+global.levelLog = 'info'
 
 
 export default global
