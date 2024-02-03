@@ -2,7 +2,6 @@ import { DisconnectReason } from '@whiskeysockets/baileys'
 import conn from './lib/sock.js'
 import { Boom } from '@hapi/boom'
 import process from 'process'
-import fs from 'fs'
 import MAIN_LOGGER from './lib/logger.js'
 
 const logger = MAIN_LOGGER.child({})
@@ -13,32 +12,32 @@ async function startItwzy() {
     if(connection === 'close') {
       const reason = new Boom(lastDisconnect?.error)?.output.statusCode
       if (reason === DisconnectReason.badSession) {
-        console.log('Bad Session File, Please Delete Session and Scan Again')
+        logger.error('Bad Session File, Please Delete Session and Scan Again')
         process.exit()
       } else if (reason === DisconnectReason.connectionClosed) {
-        console.log('Connection closed, reconnecting....')
+        logger.error('Connection closed, reconnecting....')
         await startItwzy()
       } else if (reason === DisconnectReason.connectionLost) {
-        console.log('Connection Lost from Server, reconnecting...')
+        logger.error('Connection Lost from Server, reconnecting...')
         await startItwzy()
       } else if (reason === DisconnectReason.connectionReplaced) {
-        console.log('Connection Replaced, Another New Session Opened, Please Restart Bot')
-        process.exit()
+        logger.error('Connection Replaced, Another New Session Opened, Please Restart Bot')
+        process.er.exit()
       } else if (reason === DisconnectReason.loggedOut) {
-        console.log('Device Logged Out, Please Delete Folder sessions and Scan Again.')
+        logger.error('Device Logged Out, Please Delete Folder sessions and Scan Again.')
         process.exit()
       } else if (reason === DisconnectReason.restartRequired) {
-        console.log('Restart Required, Restarting...')
+        logger.error('Restart Required, Restarting...')
         await startItwzy()
       } else if (reason === DisconnectReason.timedOut) {
-        console.log('Connection TimedOut, Reconnecting...')
+        logger.error('Connection TimedOut, Reconnecting...')
         await startItwzy()
       } else {
-        console.log(`Unknown DisconnectReason: ${reason}|${connection}`)
+        logger.error(`Unknown DisconnectReason: ${reason}|${connection}`)
         await startItwzy()
       }
     } else if(connection === 'open') {
-      console.log('opened connection')
+      logger.info('opened connection')
     }
   })
   return conn
