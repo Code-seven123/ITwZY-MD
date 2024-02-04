@@ -1,26 +1,5 @@
-import { downloadMediaMessage } from '@whiskeysockets/baileys'
-import MAIN_LOGGER from '../../lib/logger.js'
-
-const logger = MAIN_LOGGER.child({})
-
 const handler = async (conn, { user, id }, m) => {
   await conn.sendMessage(id, { text: `pong \n\n attack by _${user}_` }, { quoted: m })
-
-  const messageType = Object.keys (m.message)[0]
-  console.log(messageType)
-  if (messageType == 'imageMessage') {
-    const buffer = await downloadMediaMessage(
-      m,
-      'buffer',
-      { },                                                                  {
-        logger,
-        // pass this so that baileys can request a reupload of media
-        // that has been deleted                                              reuploadRequest: conn.updateMediaMessage(m)
-      }
-    )
-    console.log(buffer)
-    await conn.sendMessages(id, { image: buffer })
-  }
 }
 
 handler.cmd = /^(ping|test)$/i
