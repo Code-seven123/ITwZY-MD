@@ -22,5 +22,6 @@ const handler = async (conn, { id }, m) => {
 handler.cmd = /^(admin|owner)$/i
 handler.desc = 'owner list'
 handler.category = 'utility'
-handler.args = null
+//handler.args = null
+
 export default handler

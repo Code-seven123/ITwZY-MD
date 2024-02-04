@@ -8,6 +8,6 @@ const handler = async (conn, { id }, m) => {
 handler.cmd = /^(bucin)$/i
 handler.desc = 'kata kata bucin bot'
 handler.category = 'text'
-handler.args = null
+//handler.args = null
 
 export default handler

@@ -7,6 +7,6 @@ const handler = async (conn, { id, reply }, m) => {
 handler.cmd = /^(del|delete|hapus)$/i
 handler.desc = 'delete message'
 handler.category = 'utility'
-handler.args = null
+//handler.args = null
 
 export default handler

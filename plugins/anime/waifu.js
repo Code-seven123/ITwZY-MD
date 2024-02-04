@@ -7,8 +7,7 @@ const handler = async (conn, { id }, m) => {
 }
 
 handler.cmd = /^(waifu|anime)$/i
-handler.desc = 'gacha waify'
+handler.desc = 'gacha waifu'
 handler.category = 'anime'
-handler.args = null
 
 export default handler
