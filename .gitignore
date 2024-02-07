@@ -1,5 +1,8 @@
+temp
+.cache
 node_modules
 yarn-error.log
 test.js
 sessions
 .cache
+.eslintrc.cjs
