@@ -22,5 +22,4 @@ global.thumnailMenus = 'https://i.ibb.co/JB9f7fy/0dcb1d5df03b225fdfb021115044178
 global.loadingMsg = true
 global.loadingMsgText = 'Loading....'
 
-
 export default global

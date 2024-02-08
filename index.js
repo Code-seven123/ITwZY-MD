@@ -2,6 +2,7 @@ import isOnline from 'is-online'
 import fs from 'fs'
 import MAIN_LOGGER from './lib/logger.js'
 import process from 'process'
+import http from 'http'
 //import fsx from 'fs-extra'
 //const notCache = process.argv.includes('--not-cache')
 
@@ -49,3 +50,7 @@ if(!(fs.existsSync('./sessions'))) {
 }
 
 await import('./main.js')
+
+http.createServer((req, res) => {
+  res.end('uptime')
+}).listen(8080)
