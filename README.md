@@ -69,8 +69,8 @@ npm run pairingCode
 ```javascript
 
 const handler = async (conn /* action variable */, { 
-		id, // Id Whatsapp sender
-    commandName:, // Command Name by sender
+		 id, // Id Whatsapp sender
+    commandName, // Command Name by sender
     args, // Get argument from command
     msgPrefix, // Prefix used by the sender.
     globalPrefix, // Prefix set in the configuration
