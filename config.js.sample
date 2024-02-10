@@ -1,0 +1,24 @@
+let global = {}
+
+
+//owner
+global.prefix = '.'
+global.botName = 'ITwZY'
+global.owner = [
+  {
+    name: 'Manu',
+    number: '628222222223'
+  }
+]
+
+//log
+global.levelLog = 'info'
+
+//menu
+global.thumnailMenus = 'https://image.com/thumnsils'
+
+//loading
+global.loadingMsg = true
+global.loadingMsgText = 'Loading....'
+
+export default global

@@ -29,7 +29,7 @@ git clone https://github.com/Code-seven123/ITwZY-MD.git
 cd ITwZY-MD
 ```
 
-## •Install Dependencies
+## • Install Dependencies
 ### - Npm
 ```bash
 npm install
@@ -39,6 +39,9 @@ npm install
 ```bash
 yarn install
 ```
+
+## • change configuration
+Rename file `config.js.sample` to `config.js` and last edit your configuration in config.js 
 
 ## • Running Applications
 
@@ -60,6 +63,31 @@ npm run start
 #### login from Pairing code
 ```bash
 npm run pairingCode
+```
+
+## • sample plugins file
+```javascript
+
+const handler = async (conn /* action variable */, { 
+		id, // Id Whatsapp sender
+    commandName:, // Command Name by sender
+    args, // Get argument from command
+    msgPrefix, // Prefix used by the sender.
+    globalPrefix, // Prefix set in the configuration
+    phoneNumber, // Phone number from sender
+    user, // username sender
+    reply, // reply data by object
+    media // media data by object
+	}, m /* data massage */) => {
+  await conn.sendMessage(id, { text: "hello everyone" }, { quoted: m })
+}
+
+handler.cmd = /^(ping|test)$/i // set your command name
+handler.desc = '!ping pong' // set your description
+handler.category = 'utility' // set your category
+handler.args = null // set your argument
+
+export default handler
 ```
 
 ## • options

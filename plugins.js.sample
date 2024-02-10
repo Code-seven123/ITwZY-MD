@@ -1,0 +1,19 @@
+const handler = async (conn /* action variable */, {
+    id, // Id Whatsapp sender
+    commandName:, // Command Name by sender
+    args, // Get argument from command
+    msgPrefix, // Prefix used by the sender.
+    globalPrefix, // Prefix set in the configuration                                                     phoneNumber, // Phone number from sender
+    user, // username sender
+    reply, // reply data by object
+    media // media data by object
+  }, m /* data massage */) => {
+  await conn.sendMessage(id, { text: "hello everyone" }, { quoted: m })
+}
+
+handler.cmd = /^(ping|test)$/i // set your command name
+handler.desc = '!ping pong' // set your description
+handler.category = 'utility' // set your category
+handler.args = null // set your argument
+
+export default handler

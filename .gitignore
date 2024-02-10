@@ -7,3 +7,4 @@ sessions
 .cache
 .eslintrc.cjs
 temp/*
+config.js
