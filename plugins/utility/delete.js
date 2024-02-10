@@ -1,7 +1,6 @@
 const handler = async (conn, { id, reply }, m) => {
+  const del = await conn.sendMessage(id, { delete: reply })
   await conn.sendMessage(id, { text: 'deleting message.'}, { quoted: m })
-  const msg = await conn.readMessages([reply])
-  await conn.sendMessage(id, { delete: msg })
 }
 
 handler.cmd = /^(del|delete|hapus)$/i

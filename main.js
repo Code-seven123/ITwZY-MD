@@ -3,7 +3,6 @@ import conn from './lib/sock.js'
 import { Boom } from '@hapi/boom'
 import process from 'process'
 import MAIN_LOGGER from './lib/logger.js'
-
 const logger = MAIN_LOGGER.child({})
 
 async function startItwzy() {

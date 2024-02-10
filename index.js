@@ -5,6 +5,7 @@ import process from 'process'
 import http from 'http'
 const logger = MAIN_LOGGER.child({})
 
+
 const online = await isOnline()
 if(!(online)) {
   logger.info('You are currently offline.')
@@ -41,8 +42,8 @@ if(!(fs.existsSync('./sessions'))) {
   logger.info('Folder sessions found')
 }
 
-await import('./main.js')
-
 http.createServer((req, res) => {
   res.end('uptime')
 }).listen(8080)
+
+await import('./main.js')
