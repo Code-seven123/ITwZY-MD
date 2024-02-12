@@ -17,6 +17,7 @@
 
 
 
+# Linux/debian/ubuntu
 ## • Instalasi
 
 ### - Install/Clone proyek
@@ -27,6 +28,11 @@ git clone https://github.com/Code-seven123/ITwZY-MD.git
 ### - Change directory
 ```bash
 cd ITwZY-MD
+```
+
+## • install ffmpeg
+```bash
+sudo apt install ffmpeg
 ```
 
 ## • Install Dependencies
