@@ -46,4 +46,9 @@ http.createServer((req, res) => {
   res.end('uptime')
 }).listen(8080)
 
-await import('./main.js')
+
+try {
+	await import('./main.js')
+} catch (e) {
+	console.error(e)
+}

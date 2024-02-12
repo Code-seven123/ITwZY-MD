@@ -1,43 +1,43 @@
-import ffmpeg from 'fluent-ffmpeg';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import { downloadMediaMessage } from '@whiskeysockets/baileys';
-import MAIN_LOGGER from '../../lib/logger.js';
+import ffmpeg from 'fluent-ffmpeg'
+import fs from 'fs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+import { downloadMediaMessage } from '@whiskeysockets/baileys'
+import MAIN_LOGGER from '../../lib/logger.js'
 
-const logger = MAIN_LOGGER.child({});
+const logger = MAIN_LOGGER.child({})
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 function rand(min, max){
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 async function toMp3(){
   return new Promise((resolve, reject) => {
-    const outputPath = join(__dirname, `../../temp/${rand(1000000, 99999999)}.mp3`);
+    const outputPath = join(__dirname, `../../temp/${rand(1000000, 99999999)}.mp3`)
     ffmpeg(join(__dirname, '../../temp/video.mp4'))
       .toFormat('mp3')
       .save(outputPath)
       .on('error', (err) => reject(`Error converting file: ${err}`))
-      .on('end', () => resolve(outputPath));
-  });
+      .on('end', () => resolve(outputPath))
+  })
 }
 
 async function cleanupFiles() {
   try {
-    const files = fs.readdirSync(join(__dirname, '../../temp'));
+    const files = fs.readdirSync(join(__dirname, '../../temp'))
     for (const file of files) {
-      fs.unlinkSync(join(__dirname, '../../temp', file));
+      fs.unlinkSync(join(__dirname, '../../temp', file))
     }
   } catch (err) {
-    console.error('Error cleaning up files:', err);
+    console.error('Error cleaning up files:', err)
   }
 }
 
 const handler = async (conn, { user, id }, m) => {
-  const messageType = Object.keys(m.message)[0];
+  const messageType = Object.keys(m.message)[0]
   if (messageType === 'videoMessage') {
     const buffer = await downloadMediaMessage(
       m,
@@ -46,31 +46,31 @@ const handler = async (conn, { user, id }, m) => {
       {
         logger,
       }
-    );
+    )
     fs.writeFile(join(__dirname, '../../temp/video.mp4'), buffer, async (err) => {
       if (err) {
-        conn.sendMessage(id, { text: `${err}` });
+        conn.sendMessage(id, { text: `${err}` })
       } else {
         try {
-          const data = await toMp3();
+          const data = await toMp3()
           console.log(data)
           const outBuffer = fs.readFileSync(data)
           const res = await conn.sendMessage(id, { 
           	audio: outBuffer,
           	mimetype: 'audio/mpeg'
-          });
+          })
         } catch (err) {
-          conn.sendMessage(id, { text: `Error converting video to audio: ${err}` });
+          conn.sendMessage(id, { text: `Error converting video to audio: ${err}` })
         } finally {
           await cleanupFiles()
         }
       }
-    });
+    })
   }
-};
+}
 
-handler.cmd = /^(tomp3)$/i;
-handler.desc = 'convert mp4 to mp3';
-handler.category = 'utility';
+handler.cmd = /^(tomp3)$/i
+handler.desc = 'convert mp4 to mp3'
+handler.category = 'utility'
 
-export default handler;
+export default handler
