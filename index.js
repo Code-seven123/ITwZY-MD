@@ -42,9 +42,9 @@ if(!(fs.existsSync('./sessions'))) {
   logger.info('Folder sessions found')
 }
 
-http.createServer((req, res) => {
+/*http.createServer((req, res) => {
   res.end('uptime')
-}).listen(8080)
+}).listen(1000)*/
 
 
 try {

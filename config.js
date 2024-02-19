@@ -1,0 +1,44 @@
+let global = {}
+
+
+//owner
+global.prefix = '.'
+global.botName = 'ITwZY'
+global.owner = [
+  {
+    name: 'Manu',
+    number: '628222222223'
+  }
+]
+
+//log
+global.levelLog = 'info'
+
+//menu
+global.thumnailMenus = 'https://image.com/thumnsils'
+
+//loading
+global.loadingMsg = true
+global.loadingMsgText = 'Loading....'
+
+//Browser use
+global.browser = ['Linux', 'Chrome', '1.0.0']
+
+/*
+//database
+// Docs
+// https://typeorm.io/data-source-options#mysql--mariadb-data-source-options
+// and https://www.npmjs.com/package/baileys-bottle
+
+// use database ??
+global.dbOn = true
+// this mysqli / maradb
+global.database = {
+  host: '127.0.0.1',
+  port: 3306,
+  username: 'root'
+  password: '',
+  database: 'itwzy'
+}*/
+
+export default global
