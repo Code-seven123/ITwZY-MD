@@ -5,6 +5,9 @@ import process from 'process'
 import http from 'http'
 const logger = MAIN_LOGGER.child({})
 
+process.on('exit', () => {
+  console.log('exit from system')
+})
 
 const online = await isOnline()
 if(!(online)) {
@@ -42,13 +45,25 @@ if(!(fs.existsSync('./sessions'))) {
   logger.info('Folder sessions found')
 }
 
-/*http.createServer((req, res) => {
-  res.end('uptime')
-}).listen(1000)*/
+http.createServer((req, res) => {
+  if(req.url == '/'){
+  	res.writeHead(200, { 'Content-Type': 'text/html' })
+  	const html = `<h1 align="center">BOT IS STARTING</h1>
+        <button onclick="location.href = '/stop'">STOP BOT</button>`
+		res.end(html)
+  } else if(req.url == '/stop'){
+		res.end('exit')
+		process.exit()
+  } else {
+		res.end('error')
+  }
+}).listen(2929)
 
-
-try {
-	await import('./main.js')
-} catch (e) {
-	console.error(e)
+async function start(){
+	try {
+		return import('./main.js')
+	} catch (e) {
+		return start()
+	}
 }
+await start()

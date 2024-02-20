@@ -3,6 +3,7 @@ import conn from './lib/sock.js'
 import { Boom } from '@hapi/boom'
 import process from 'process'
 import MAIN_LOGGER from './lib/logger.js'
+import cfg from './config.js'
 const logger = MAIN_LOGGER.child({})
 
 async function startItwzy() {
@@ -37,6 +38,9 @@ async function startItwzy() {
       }
     } else if(connection === 'open') {
       logger.info('opened connection')
+      const status = "bot is starting"
+			await conn.updateProfileStatus(status)
+			await conn.updateProfileName(cfg.botName)
     }
   })
   return conn
