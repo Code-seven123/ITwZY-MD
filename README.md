@@ -1,5 +1,5 @@
-<center>
-![icon](src/bg.jpg)
+
+![icon](src/icon.jpg)
 
 # Whatsapp Bot - Node Js
 ## ITwZY-MD
@@ -7,7 +7,6 @@
 [![Repo Updated Badge](https://badges.strrl.dev/updated/Code-seven123/ITwZY-MD)](https://badges.strrl.dev)
 ![GitHub contributors](https://img.shields.io/github/contributors/Code-seven123/ITwZY-MD)
 ![GitHub repo size](https://img.shields.io/github/repo-size/code-seven123/ITwZY-MD?style=for-the-badge&logo=Affinity&labelColor=%23836FFF)
-</center>
 
 ## • Features  Bot
 
