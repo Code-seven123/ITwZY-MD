@@ -1,8 +1,7 @@
-import pkg from 'y2mate-dl'
-const { ytmp3 } = pkg
+import y2mate from 'y2mate-dl'
 const handler = async (conn, { args, id }, m) => {
 	const url = args[0]
-	const res = await ytmp3(url)
+	const res = await y2mate.ytmp3(url)
 	const text = `Info \n *owner*: ${res.owner}\n*title*: ${res.title}\n*size*: ${res.size}`
 	await conn.sendMessage(id, { audio: {
 		url: res.mp3
