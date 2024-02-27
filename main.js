@@ -5,6 +5,7 @@ import process from 'process'
 import MAIN_LOGGER from './lib/logger.js'
 import cfg from './config.js'
 import utils from './lib/utils.js'
+
 const logger = MAIN_LOGGER.child({})
 
 async function startItwzy() {
@@ -40,8 +41,7 @@ async function startItwzy() {
       }
     } else if(connection === 'open') {
       logger.info('opened connection')
-            const status = 'bot is starting'
-      await conn.updateProfileStatus(status)
+      await conn.updateProfileStatus('bot is starting')
       process.on('exit', async () => {
         await conn.updateProfileStatus('bot stopped')
       })
