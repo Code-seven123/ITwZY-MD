@@ -4,6 +4,7 @@ import { Boom } from '@hapi/boom'
 import process from 'process'
 import MAIN_LOGGER from './lib/logger.js'
 import cfg from './config.js'
+import utils from './lib/utils.js'
 const logger = MAIN_LOGGER.child({})
 
 async function startItwzy() {
@@ -11,6 +12,7 @@ async function startItwzy() {
     const { connection, lastDisconnect } = update
     if(connection === 'close') {
       const reason = new Boom(lastDisconnect?.error)?.output.statusCode
+      console.log(reason)
       if (reason === DisconnectReason.badSession) {
         logger.error('Bad Session File, Please Delete Session and Scan Again')
         process.exit()
@@ -38,9 +40,12 @@ async function startItwzy() {
       }
     } else if(connection === 'open') {
       logger.info('opened connection')
-      const status = "bot is starting"
-			await conn.updateProfileStatus(status)
-			await conn.updateProfileName(cfg.botName)
+            const status = 'bot is starting'
+      await conn.updateProfileStatus(status)
+      process.on('exit', async () => {
+        await conn.updateProfileStatus('bot stopped')
+      })
+      /*await conn.updateProfileName(cfg.botName)*/
     }
   })
   return conn

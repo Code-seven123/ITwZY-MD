@@ -1,6 +1,3 @@
-let global = {}
-
-
 //owner
 global.prefix = '.'
 global.botName = 'ITwZY'
@@ -23,5 +20,11 @@ global.loadingMsgText = 'Loading....'
 
 //Browser use
 global.browser = ['Linux', 'Chrome', '1.0.0']
+
+global.goodbyeImage = ""
+global.goodbyeText = ""
+
+global.welcomeImage = ""
+global.welcomeText = ""
 
 export default global

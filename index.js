@@ -8,7 +8,7 @@ const logger = MAIN_LOGGER.child({})
 process.on('exit', () => {
   console.log('exit from system')
 })
-
+logger.info("Input 'exit' or 'q' to safely exit the program.")
 const online = await isOnline()
 if(!(online)) {
   logger.info('You are currently offline.')
@@ -50,20 +50,20 @@ http.createServer((req, res) => {
   	res.writeHead(200, { 'Content-Type': 'text/html' })
   	const html = `<h1 align="center">BOT IS STARTING</h1>
         <button onclick="location.href = '/stop'">STOP BOT</button>`
-		res.end(html)
+    res.end(html)
   } else if(req.url == '/stop'){
-		res.end('exit')
-		process.exit()
+    res.end('exit')
+    process.exit()
   } else {
-		res.end('error')
+    res.end('error')
   }
 }).listen(2929)
 
 async function start(){
-	try {
-		return import('./main.js')
-	} catch (e) {
-		return start()
-	}
+  try {
+    return import('./main.js')
+  } catch (e) {
+    return await start()
+  }
 }
 await start()
