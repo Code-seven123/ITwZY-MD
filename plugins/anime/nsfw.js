@@ -9,5 +9,5 @@ const handler = async (conn, { id }, m) => {
 handler.cmd = /^(nsfw)$/i
 handler.desc = 'gacha waifu'
 handler.category = 'anime'
-
+handler.admin = true
 export default handler

@@ -26,7 +26,7 @@ async function startItwzy() {
         logger.error('Connection Lost from Server, reconnecting...')
         await startItwzy()
       } else if (reason === DisconnectReason.connectionReplaced) {
-        logger.error('Connection Replaced, Another New Session Opened, Please Restart Bot')
+       logger.error('Connection Replaced, Another New Session Opened, Please Restart Bot')
         process.er.exit()
       } else if (reason === DisconnectReason.loggedOut) {
         logger.error('Device Logged Out, Please Delete Folder sessions and Scan Again.')

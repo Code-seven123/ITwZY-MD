@@ -7,5 +7,7 @@ handler.cmd = /^(del|delete|hapus)$/i
 handler.desc = 'delete message'
 handler.category = 'utility'
 //handler.args = null
+handler.admin = true
+
 
 export default handler
