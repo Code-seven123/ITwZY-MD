@@ -15,5 +15,7 @@ handler.cmd = /^(ping|test)$/i // set your command name
 handler.desc = '!ping pong' // set your description
 handler.category = 'utility' // set your category
 handler.args = null // set your argument
+handler.admin = true // use false for public or true for admin
+
 
 export default handler

@@ -8,7 +8,7 @@ const logger = MAIN_LOGGER.child({})
 process.on('exit', () => {
   console.log('exit from system')
 })
-logger.info("Input 'exit' or 'q' to safely exit the program.")
+logger.info("Use 'Ctrl + c' to safely exit the program.")
 const online = await isOnline()
 if(!(online)) {
   logger.info('You are currently offline.')
@@ -16,6 +16,10 @@ if(!(online)) {
 } else {
   logger.info('You are currently online.')
 }
+
+fs.watch('./', { recursive: true }, (type, file) => {
+	console.log(type, file)
+})
 
 if(!(fs.existsSync('./temp'))) {
   logger.info('temp not found')
@@ -67,3 +71,4 @@ async function start(){
   }
 }
 await start()
+
