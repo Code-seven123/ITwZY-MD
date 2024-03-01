@@ -24,5 +24,6 @@ for (const folder of commandFolders) {
 }
 
 logger.info(`${commands.length} command attacker`)
+console.log(`${commands.length} command attacker`)
 //console.log(commands)
 export default commands

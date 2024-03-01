@@ -9,12 +9,15 @@ process.on('exit', () => {
   console.log('exit from system')
 })
 logger.info("Use 'Ctrl + c' to safely exit the program.")
+console.log("Use 'Ctrl + c' to safely exit the program.")
 const online = await isOnline()
 if(!(online)) {
   logger.info('You are currently offline.')
+  console.log('You are currently offline.')
   process.exit()
 } else {
   logger.info('You are currently online.')
+  console.log('You are currently online.')
 }
 
 fs.watch('./', { recursive: true }, (type, file) => {
@@ -23,45 +26,39 @@ fs.watch('./', { recursive: true }, (type, file) => {
 
 if(!(fs.existsSync('./temp'))) {
   logger.info('temp not found')
+  console.log('temp not found')
   fs.mkdir('./temp', { recursive: true }, (err) => {
     if (err) {
       logger.error(err, 'Failed to create a folder.')
+      console.log(err, 'Failed to create a folder.')
       process.exit()
     } else {
       logger.info('Folder "./temp" berhasil dibuat.')
+      console.log('Folder "./temp" berhasil dibuat.')
     }
   })
 } else {
   logger.info('Folder temp found')
+  console.log('Folder temp found')
 }
 
 if(!(fs.existsSync('./sessions'))) {
   logger.info('sessions not found')
+  console.log('sessions not found')
   fs.mkdir('./sessions', { recursive: true }, (err) => {
     if (err) {
       logger.error(err, 'Failed to create a folder.')
+      console.log(err, 'Failed to create a folder.')
       process.exit()
     } else {
       logger.info('Folder "./sessions" berhasil dibuat.')
+      console.log('Folder "./sessions" berhasil dibuat.')
     }
   })
 } else { 
   logger.info('Folder sessions found')
+  console.log('Folder sessions found')
 }
-
-http.createServer((req, res) => {
-  if(req.url == '/'){
-  	res.writeHead(200, { 'Content-Type': 'text/html' })
-  	const html = `<h1 align="center">BOT IS STARTING</h1>
-        <button onclick="location.href = '/stop'">STOP BOT</button>`
-    res.end(html)
-  } else if(req.url == '/stop'){
-    res.end('exit')
-    process.exit()
-  } else {
-    res.end('error')
-  }
-}).listen(2929)
 
 async function start(){
   try {

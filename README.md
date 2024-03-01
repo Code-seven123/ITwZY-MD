@@ -19,7 +19,6 @@
 | bucin text (ID) | ✓ |
 
 
-
 # Linux/debian/ubuntu
 ## • Instalasi
 
@@ -55,24 +54,18 @@ Rename file `config.js.sample` to `config.js` and last edit your configuration i
 ## • Running Applications
 
 ### - Yarn
-#### login from QR code
+#### login from Pairing code
 ```bash
 yarn start
 ```
-#### login from Pairing code
-```bash
-yarn pairingCode
-```
 
 ### - Npm
-#### login from QR code
+#### login from Pairing code
 ```bash
 npm run start
 ```
-#### login from Pairing code
-```bash
-npm run pairingCode
-```
+
+## • Open link in Chrome and input your phone number from get pairing code
 
 ## • sample plugins file
 ```javascript
@@ -99,8 +92,3 @@ handler.admin = true // use false for public or true for admin
 
 export default handler
 ```
-
-## • options
-### --notCache
-
-`--notCache` functions to stop the scheduled time, which is 24 days or 86400000 milliseconds
