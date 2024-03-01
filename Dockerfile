@@ -5,9 +5,8 @@ RUN apt-get update && \
   ffmpeg \
   imagemagick \
   webp && \
-  apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
-
+  apt-get upgrade -y
+  
 COPY package.json .
 
 RUN npm install

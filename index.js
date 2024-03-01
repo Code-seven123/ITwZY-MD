@@ -20,10 +20,6 @@ if(!(online)) {
   console.log('You are currently online.')
 }
 
-fs.watch('./', { recursive: true }, (type, file) => {
-	console.log(type, file)
-})
-
 if(!(fs.existsSync('./temp'))) {
   logger.info('temp not found')
   console.log('temp not found')
