@@ -22,6 +22,4 @@ cfg.browser = env.BROWSER.split(',')
 //server web
 cfg.port = env.PORT
 
-console.log(cfg)
-
 export default cfg

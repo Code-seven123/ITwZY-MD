@@ -5,7 +5,9 @@ import process from 'process'
 import MAIN_LOGGER from './lib/logger.js'
 import cfg from './config.js'
 import utils from './lib/utils.js'
+import readline from 'readline'
 
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const logger = MAIN_LOGGER.child({})
 
 async function startItwzy() {
@@ -55,7 +57,10 @@ async function startItwzy() {
       process.on('exit', async () => {
         await conn.updateProfileStatus('bot stopped')
       })
-
+			rl.on('SIGINT', async () => {
+      	await conn.updateProfileStatus('bot stopped')
+        process.exit()
+      })
 			process.stdin.on('keypress', (_, key) => {
 			  if (key && key.ctrl && key.name === 'c') {
 			    console.log('CTRL+C detected');
