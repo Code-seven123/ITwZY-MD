@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node index.js",
     "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
-    "pairingCode": "node index.js --use-pairing-code"
+    "pairingCode": "node index.js --use-pairing-code",
+    "useWeb": "node index.js --use-web"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
