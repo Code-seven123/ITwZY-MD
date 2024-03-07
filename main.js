@@ -12,7 +12,7 @@ const logger = MAIN_LOGGER.child({})
 
 async function startItwzy() {
   conn.ev.on('connection.update', async ( update ) => {
-    const { connection, lastDisconnect } = update
+    const { connection, lastDisconnect, qr } = update
     if(connection === 'close') {
 
       const reason = new Boom(lastDisconnect?.error)?.output.statusCode
