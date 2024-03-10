@@ -14,9 +14,14 @@
 | ------ | ---- |
 | Facebook | ✓ |
 | Instagram | ✓ |
-| Admin | ++ |
+| Admin | ✓ |
 | lyrics | ✓ |
 | bucin text (ID) | ✓ |
+| Premium mode | ++ |
+|  youtube downloader | ✓ |
+| Converter mp4 to mp3 | ✓ |
+| Gacha waifu | ✓ |
+
 
 
 # Linux/debian/ubuntu
@@ -67,6 +72,14 @@ npm run start
 
 ## • Open link in Chrome and input your phone number from get pairing code
 
+## • Argumen information
+### ``node index.js <options>``
+### ``--use-pairing-code``
+This is used for logging in via pairing code.
+### ``--use-web``
+This option will use the website for logging in.
+### ``--use-premium``
+This is used to switch to premium-only mode.
 ## • sample plugins file
 ```javascript
 

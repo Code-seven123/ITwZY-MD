@@ -8,7 +8,8 @@
     "start": "node index.js",
     "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
     "pairingCode": "node index.js --use-pairing-code",
-    "useWeb": "node index.js --use-web"
+    "useWeb": "node index.js --use-web",
+    "usePremi": "node index.js --use-premium"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",

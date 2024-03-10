@@ -5,6 +5,4 @@ const handler = async (conn, { user, id }, m) => {
 handler.cmd = /^(ping|test)$/i
 handler.desc = '!ping pong'
 handler.category = 'utility'
-//handler.args = null
-
 export default handler
