@@ -10,7 +10,8 @@
     "pairingCode": "node index.js --use-pairing-code",
     "useWeb": "node index.js --use-web",
     "usePremi": "node index.js --use-premium",
-    "dev": "nodemon --ignore sessions/ --ignore temp/ --ignore store.json index.js"
+    "dev": "nodemon --ignore sessions/ --ignore temp/ --ignore store.json index.js",
+    "group": "node index.js --group"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
