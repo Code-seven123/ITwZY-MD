@@ -8,14 +8,13 @@ const json = fs.readFileSync(join(__dirname, '../../premium.json'))
 const premi = JSON.parse(json)
 
 const handler = async (conn, { globalPrefix, args, id }, m) =>{ 
-  if(args[0] && args[1] && args[1].startsWith('@')){
-    const data = {
-      name: args[0],
-      number: args[1].substr(1)
-    }
-    premi.user.push(data)
+  if(args[0] && args[0].startsWith('@')){
     
-    await conn.sendMessage(id, { text: ` Adding user ${data.number} to premium user`})
+    const deleted = premi.user.find(item => item.number == args[0].substr(1))
+    const data = premi.user.filter(item => item !== deleted)
+    premi.user = data
+    
+    await conn.sendMessage(id, { text: ` Deleting user ${deleted.number} to premium user`})
     
     const jsonPremi = JSON.stringify(premi, null, 2)
     
@@ -32,9 +31,9 @@ const handler = async (conn, { globalPrefix, args, id }, m) =>{
   }
 }
 
-handler.cmd = /^(addPremi)$/i
-handler.desc = 'Adding a premium user'
+handler.cmd = /^(delPremi)$/i
+handler.desc = 'Deleting a premium user'
 handler.category = 'utility'
 handler.admin = true
-handler.args = '<username> + <user>'
+handler.args = '<user>'
 export default handler

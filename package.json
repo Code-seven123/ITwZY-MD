@@ -9,7 +9,8 @@
     "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
     "pairingCode": "node index.js --use-pairing-code",
     "useWeb": "node index.js --use-web",
-    "usePremi": "node index.js --use-premium"
+    "usePremi": "node index.js --use-premium",
+    "dev": "nodemon --ignore sessions/ --ignore temp/ --ignore store.json index.js"
   },
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
@@ -28,6 +29,7 @@
     "node-cache": "^5.1.2",
     "node-fetch": "^3.3.2",
     "node-youtube-music": "^0.10.3",
+    "nodemon": "^3.1.0",
     "path": "^0.12.7",
     "pino": "^8.17.2",
     "pino-pretty": "^10.3.1",

@@ -3,6 +3,7 @@ import fs from 'fs'
 import MAIN_LOGGER from './lib/logger.js'
 import process from 'process'
 import http from 'http'
+import { exec } from 'child_process'
 const logger = MAIN_LOGGER.child({})
 
 const filePath = 'premium.json';
@@ -61,7 +62,7 @@ if(!(fs.existsSync('./sessions'))) {
 async function executeSelf() {
     console.log('Executing the program again...')
     try {
-        await import('./main.js')
+    		await import('./main.js')
         console.log('Program re-executed successfully.');
     } catch (error) {
         console.error(`Error executing program: ${error.message}`)
