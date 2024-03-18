@@ -36,7 +36,7 @@ async function cleanupFiles() {
   }
 }
 
-const handler = async (conn, { user, id }, m) => {
+const handler = async (conn, { id }, m) => {
   const messageType = Object.keys(m.message)[0]
   if (messageType === 'videoMessage') {
     const buffer = await downloadMediaMessage(
@@ -55,7 +55,7 @@ const handler = async (conn, { user, id }, m) => {
           const data = await toMp3()
           console.log(data)
           const outBuffer = fs.readFileSync(data)
-          const res = await conn.sendMessage(id, { 
+          await conn.sendMessage(id, { 
           	audio: outBuffer,
           	mimetype: 'audio/mpeg'
           })

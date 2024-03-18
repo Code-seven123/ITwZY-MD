@@ -1,3 +1,0 @@
-apt install ffmpeg
-npm install
-cp config.js.sample config.js

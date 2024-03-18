@@ -40,7 +40,7 @@ async function cleanupFiles() {
   }
 }
 
-const handler = async (conn, { user, id }, m) => {
+const handler = async (conn, { id }, m) => {
   const messageType = Object.keys(m.message)[0]
   const gif = Object.keys(m.message?.videoMessage || { text: 'undefined' })
   if (messageType === 'imageMessage') {

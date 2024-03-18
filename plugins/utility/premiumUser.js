@@ -3,9 +3,8 @@ import { fileURLToPath } from 'url'
 import fs from 'fs'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const premi = JSON.parse(fs.readFileSync(join(__dirname, '../../premium.json')))
 
-const json = fs.readFileSync(join(__dirname, '../../premium.json'))
-const premi = JSON.parse(json)
 
 const handler = async (conn, { id }, m) =>{ 
   const data = []

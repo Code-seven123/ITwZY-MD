@@ -21,36 +21,36 @@ async function cleanupFiles() {
 }
 
 const handler = async (conn, { args, id }, m) => {
-	const url = args[0]
-	if(url) {
-		try {
-			const data = await ytdl.getInfo(url)
-			const res = data?.player_response?.videoDetails
-			const caption = `*Author*: ${res.author || 'Not found'}\n`
+  const url = args[0]
+  if(url) {
+    try {
+      const data = await ytdl.getInfo(url)
+      const res = data?.player_response?.videoDetails
+      const caption = `*Author*: ${res.author || 'Not found'}\n`
 			  + `*Title*: ${res.title || 'Not Found'}\n`
 			  + `*Description*: ${res.shortDescription || 'Not found'}\n`
-			await conn.sendMessage(id, { text: caption }, { quoted: m })
-			const output = join(__dirname, `../../temp/${rand(99999999, 10000000000)}.mp4`)
-			const stream = fs.createWriteStream(output)
-			const video = await ytdl(url)
-			video.pipe(stream)
-			stream.on('finish', async () => {
-				await conn.sendMessage(id, { video: {  url: output} })
-				await conn.sendMessage(id, { text: 'Finished' })
-			})
-			video.on('end', async () => {
-				await conn.sendMessage(id, { video: {  url: output} })
+      await conn.sendMessage(id, { text: caption }, { quoted: m })
+      const output = join(__dirname, `../../temp/${rand(99999999, 10000000000)}.mp4`)
+      const stream = fs.createWriteStream(output)
+      const video = await ytdl(url)
+      video.pipe(stream)
+      stream.on('finish', async () => {
+        await conn.sendMessage(id, { video: {  url: output} })
         await conn.sendMessage(id, { text: 'Finished' })
-			})
-		} catch (e) {
-			await conn.sendMessage(id, { text: `${e}` })
-			console.error(e)
-		} finally {
-			await cleanupFiles()
-		}
-	} else {
-		await conn.sendMessage(id, { text: "link youtube not defined" })
-	}
+      })
+      video.on('end', async () => {
+        await conn.sendMessage(id, { video: {  url: output} })
+        await conn.sendMessage(id, { text: 'Finished' })
+      })
+    } catch (e) {
+      await conn.sendMessage(id, { text: `${e}` })
+      console.error(e)
+    } finally {
+      await cleanupFiles()
+    }
+  } else {
+    await conn.sendMessage(id, { text: 'link youtube not defined' })
+  }
 }
 
 handler.cmd = /^(yt|ytdl)$/i
