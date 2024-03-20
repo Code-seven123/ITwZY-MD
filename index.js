@@ -79,11 +79,12 @@ async function start(){
 
   nodemon.on('quit', () => {
 	  console.log('Server has quit.')
-  	process.exit()
+	  nodemon.emit('restart')
   })
 
   nodemon.on('crash', () => {
   	console.error('Server has crashed!')
+  	nodemon.emit('restart')
   })
 }
 start()
