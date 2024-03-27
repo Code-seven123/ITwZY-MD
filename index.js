@@ -14,7 +14,6 @@ const logger = MAIN_LOGGER.child({})
 
 process.on('exit', () => {
   console.log('exit from system, system ID', process.pid)
-  
 })
 logger.info('Use \'Ctrl + c\' to safely exit the program.')
 console.log('Use \'Ctrl + c\' to safely exit the program.')
