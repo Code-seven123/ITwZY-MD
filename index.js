@@ -13,7 +13,8 @@ const __dirname = dirname(__filename)
 const logger = MAIN_LOGGER.child({})
 
 process.on('exit', () => {
-  console.log('exit from system')
+  console.log('exit from system, system ID', process.pid)
+  
 })
 logger.info('Use \'Ctrl + c\' to safely exit the program.')
 console.log('Use \'Ctrl + c\' to safely exit the program.')
@@ -64,27 +65,23 @@ if(!(fs.existsSync('./sessions'))) {
 }
 
 async function start(){
+  const args = [process.argv.filter(arg => arg.startsWith('--'))]
   nodemon({
-  	script: 'main.js', // Your main server file
-	  ext: 'js json', // File extensions to watch
-  	ignore: ['node_modules/', 'sessions/', 'temp/'],
+    script: 'main.js', // Your main server file
+    ext: 'js json', // File extensions to watch
+    ignore: ['node_modules/', 'sessions/', 'temp/'],
+    args: args.flat()
   })
   nodemon.on('start', () => {
-	  console.log('Server has started!')
+    console.log('Server has started!')
   })
 
   nodemon.on('restart', (files) => {
-  	console.log('Server restarting due to changes in:', files)
-  })
-
-  nodemon.on('quit', () => {
-	  console.log('Server has quit.')
-	  nodemon.emit('restart')
+    console.log('Server restarting due to changes in:', files)
   })
 
   nodemon.on('crash', () => {
-  	console.error('Server has crashed!')
-  	nodemon.emit('restart')
+    console.error('Server has crashed!')
   })
 }
 start()

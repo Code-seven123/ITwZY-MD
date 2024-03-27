@@ -5,10 +5,6 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-function rand(min, max){
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
-
 async function cleanupFiles() {
   try {
     const files = fs.readdirSync(join(__dirname, '../../temp'))
@@ -25,21 +21,21 @@ const handler = async (conn, { args, id }, m) => {
   if(url) {
     try {
       const data = await ytdl.getInfo(url)
+
+      //Info send
       const res = data?.player_response?.videoDetails
       const caption = `*Author*: ${res.author || 'Not found'}\n`
-			  + `*Title*: ${res.title || 'Not Found'}\n`
-			  + `*Description*: ${res.shortDescription || 'Not found'}\n`
+        + `*Title*: ${res.title || 'Not Found'}\n`
+        + `*Description*: ${res.shortDescription || 'Not found'}\n`
       await conn.sendMessage(id, { text: caption }, { quoted: m })
-      const output = join(__dirname, `../../temp/${rand(99999999, 10000000000)}.mp4`)
-      const stream = fs.createWriteStream(output)
-      const video = await ytdl(url)
-      video.pipe(stream)
-      stream.on('finish', async () => {
-        await conn.sendMessage(id, { video: {  url: output} })
-        await conn.sendMessage(id, { text: 'Finished' })
-      })
-      video.on('end', async () => {
-        await conn.sendMessage(id, { video: {  url: output} })
+
+      //Video download
+      const format = await ytdl.chooseFormat(data.formats,{quality:'18'})
+      const outputFilePath = join(__dirname, `../../temp/${data.videoDetails.title}.mp4`)
+      const outputStream = fs.createWriteStream(outputFilePath)
+      await ytdl.downloadFromInfo(data, { format: format }).pipe(outputStream)
+      outputStream.on('finish', async () => {
+        await conn.sendMessage(id, { video: {  url: outputFilePath} })
         await conn.sendMessage(id, { text: 'Finished' })
       })
     } catch (e) {
