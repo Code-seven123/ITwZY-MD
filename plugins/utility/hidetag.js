@@ -1,10 +1,10 @@
-const handler = async (conn, { id, reply }, m) => {
+const handler = async (conn, { id, reply, quoted }, m) => {
   const { participants } = await conn.groupMetadata(id) || id
   const userId = []
   for( const all of participants ){
     userId.push(all.id)
   }
-  await conn.sendMessage(id, { text: '`@everyone`', mentions: userId }, { quoted: reply })
+  await conn.sendMessage(id, { text: '`@everyone`', mentions: userId }, { quoted: quoted })
 }
 
 handler.cmd = /^(hidetag)$/i

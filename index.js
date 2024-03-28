@@ -6,6 +6,8 @@ import http from 'http'
 import { fileURLToPath } from 'url'
 import { dirname, join, extname } from 'path'
 import nodemon from 'nodemon'
+import { exec } from 'child_process'
+
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
