@@ -4,7 +4,7 @@ const handler = async (conn, { id, reply, quoted }, m) => {
   for( const all of participants ){
     userId.push(all.id)
   }
-  await conn.sendMessage(id, { text: '`@everyone`', mentions: userId }, { quoted: quoted })
+  await conn.sendMessage(id, { text: '`@everyone`', mentions: userId })
 }
 
 handler.cmd = /^(hidetag)$/i
