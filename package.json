@@ -1,0 +1,33 @@
+{
+  "name": "itwzy-v2",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bochilteam/scraper": "^4.2.4",
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "is-online": "^10.0.0",
+    "jimp": "^0.16.13",
+    "link-preview-js": "^3.0.5",
+    "moment-timezone": "^0.5.45",
+    "node-cache": "^5.1.2",
+    "node-fetch": "^3.3.2",
+    "node-youtube-music": "^0.10.3",
+    "nodemon": "^3.1.0",
+    "pino": "^8.19.0",
+    "pino-pretty": "^11.0.0",
+    "ytdl-core": "^4.11.5"
+  }
+}
