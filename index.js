@@ -77,7 +77,7 @@ async function start(){
 
   nodemon.on("crash", () => {
     console.error("Server has crashed!")
-    nodemon.restart("Server crash")
+    process.exit(0)
   })
 }
 start()
