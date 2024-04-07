@@ -7,16 +7,21 @@ const handler = async (conn, { id, args }, m) => {
     const musics = await searchMusics(args.join(" "))
     const data = []
     const back = []
+    let no = 1
     for( const music of musics ){
-      console.log(music)
       const ytid = music?.youtubeId
       const title = music?.title
       const label = music?.duration.label
       const album = music?.album
-      data.push(`*Youtube ID*: ${ytid}\n*Title Music*: ${title}\n*Album*: ${album}\n*Duration*: ${label}\n`)
+      const artists = []
+      for( const art of music?.artists ) {
+        artists.push(`- ${art.name}`)
+      }
+      data.push(`*No*: ${no}\n*Youtube ID*: ${ytid}\n*Title Music*: ${title}\n*artists*: \n${artists.join("\n")}\n*Album*: ${album}\n*Duration*: ${label}\n`)
       back.push(ytid)
+      no += 1
     }
-    await conn.sendMessage(id, { text: data.join("\n") }, { quoted: m })
+    await conn.sendMessage(id, { text: `${musics.length} music files retrieved. \nUse the command number to select which music to download, and use the 'end' argument to stop the command.\nExample:\n${prefix}no 1\n${prefix}no end\n\n` + data.join("\n") }, { quoted: m })
     return {
       mode: "quest",
       ytid: back
@@ -27,6 +32,7 @@ const handler = async (conn, { id, args }, m) => {
 }
 
 handler.answer = async(data, conn, { commandName, args, id }, m) => {
+  if(args[0] === 'end') return 'ok';
   const no = parseInt(args[0]) - 1
   const myData = data.find(item => item)
   const ytid = myData.ytid[no] || 'not found'
