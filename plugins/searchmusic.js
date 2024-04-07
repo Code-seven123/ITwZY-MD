@@ -18,7 +18,8 @@ const handler = async (conn, { id, args }, m) => {
     }
     await conn.sendMessage(id, { text: data.join("\n") }, { quoted: m })
     return {
-      data: back
+      mode: "quest",
+      ytid: back
     }
   } else {
     await conn.sendMessage(id, { text: "title not found" })
@@ -27,9 +28,11 @@ const handler = async (conn, { id, args }, m) => {
 
 handler.answer = async(data, conn, { commandName, args, id }, m) => {
   const no = parseInt(args[0]) - 1
-  const ytid = data.data[no]
+  const myData = data.find(item => item)
+  const ytid = myData.ytid[no] || 'not found'
   await m.reply(id, `Youtube ID select no ${args[0]}, ID ${ytid}`)
   await conn.sendMessage(id, { text: `${prefix}ytdl ${ytid}` })
+  return 'ok'
 }
 
 handler.cmd = /^(searchmusic|music)$/i
