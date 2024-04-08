@@ -34,7 +34,7 @@ const handler = async (conn, { id, args }, m) => {
 handler.answer = async(data, conn, { commandName, args, id }, m) => {
   if(args[0] === 'end') return 'ok';
   const no = parseInt(args[0]) - 1
-  const myData = data.find(item => item)
+  const myData = data?.find(item => item.ytid)
   const ytid = myData.ytid[no] || 'not found'
   await m.reply(id, `Youtube ID select no ${args[0]}, ID ${ytid}`)
   await conn.sendMessage(id, { text: `${prefix}ytdl ${ytid}` })
