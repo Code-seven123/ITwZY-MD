@@ -6,7 +6,7 @@ const handler = async (conn, { id }, m) => {
   await conn.sendMessage(id, { image: { url: data.url } }, { quoted: m })
 }
 
-handler.cmd = /^(neko|anime)$/i
+handler.cmd = /^(neko)$/i
 handler.desc = "gacha waifu"
 handler.category = "anime"
 
