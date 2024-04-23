@@ -64,7 +64,7 @@ async function start(){
   nodemon({
     script: "./lib/socket.js", // Your main server file
     ext: "js json", // File extensions to watch
-    ignore: ["node_modules/", "sessions/", "temp/"],
+    ignore: ["node_modules/", "sessions/", "temp/", "store.json"],
     args: args.flat()
   })
   nodemon.on("start", () => {
