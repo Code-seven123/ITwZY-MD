@@ -43,55 +43,101 @@ async function cleanupFiles() {
 const handler = async (conn, { id }, m) => {
   const messageType = Object.keys(m.message)[0]
   const gif = Object.keys(m.message?.videoMessage || { text: "undefined" })
-  if (messageType === "imageMessage") {
-    const buffer = await downloadMediaMessage(
+  let mediaBuffer = null
+  let mediaType = null
+  if(messageType === "extendedTextMessage"){
+    const quotedMessage = m.message?.extendedTextMessage?.contextInfo?.quotedMessage
+    const qutedGif = Object.keys(quotedMessage?.videoMessage|| { text: "undefined" })
+    console.log('Quoted message ', quotedMessage)
+    if(Object.keys(quotedMessage)[0] === "imageMessage"){
+      mediaBuffer = await downloadMediaMessage(
+        quotedMessage,
+        "buffer",
+        {},
+        {
+          logger,
+          reuploadRequest: conn.updateMediaMessage
+        }
+      )
+      mediaType = "image"
+    } else if(Object.keys(quotedMessage)[0] === "videoMessage" && qutedGif.includes("gifAttribution")) {
+      mediaBuffer = await downloadMediaMessage(
+        quotedMessage,
+        "buffer",
+        {},
+        {
+          logger,
+          reuploadRequest: conn.updateMediaMessage
+        }
+      )
+      mediaType = "video"
+    } else {
+      await m.reply(id, "Quoted message not image or gif")
+    }
+  } else if(messageType === "imageMessage"){
+    mediaBuffer = await downloadMediaMessage(
       m,
       "buffer",
       {},
       {
         logger,
+        reuploadRequest: conn.updateMediaMessage
       }
     )
-    fs.writeFile(join(__dirname, "../temp/gambar.jpg"), buffer, async (err) => {
-      if (err) {
-        await conn.sendMessage(id, { text: `${err}` })
-      } else {
-        try {
-          const data = await toMp3("gambar.jpg")
-          await conn.sendMessage(id, { sticker: { url: data } })
-        } catch (e) {
-          await conn.sendMessage(id, { text: `${e}` })
-        } finally {
-          await cleanupFiles()
-        }
-      }
-    })
-  } else if (messageType === "videoMessage" && gif.includes("gifAttribution")) {
-    const buffer = await downloadMediaMessage(
+    mediaType = "image"
+  } else if(messageType === "videoMessage" && gif.includes("gifAttribution")) {
+    mediaBuffer = await downloadMediaMessage(
       m,
       "buffer",
       {},
       {
         logger,
+        reuploadRequest: conn.updateMediaMessage
       }
     )
-    fs.writeFile(join(__dirname, "../temp/gif.mp4"), buffer, async (err) => {
-      if (err) {
-        await conn.sendMessage(id, { text: `${err}` })
-      } else {
-        try {
-          const data = await toMp3("gif.mp4")
-          await conn.sendMessage(id, { sticker: { url: data } })
-        } catch (e) {
-          await conn.sendMessage(id, { text: `${e}` })
-        } finally {
-          await cleanupFiles()
-        }
-      }
-    })
+    mediaType = "video"
   } else {
-    await conn.sendMessage(id, { text: "Image Or GIF Not Found" })
+    await m.reply(id, "Image or gif not found")
   }
+
+  if(mediaBuffer != null){
+    if(mediaType === "image"){
+      fs.writeFile(join(__dirname, "../temp/gambar.jpg"), mediaBuffer, async (err) => {
+        if (err) {
+          await conn.sendMessage(id, { text: `${err}` })
+        } else {
+          try {
+            const data = await toMp3("gambar.jpg")
+            await conn.sendMessage(id, { sticker: { url: data } })
+          } catch (e) {
+            await conn.sendMessage(id, { text: `${e}` })
+          } finally {
+            await cleanupFiles()
+          }
+        }
+      })
+    } else if(mediaType === "video") {
+      fs.writeFile(join(__dirname, "../temp/gif.mp4"), mediaBuffer, async (err) => {
+        if (err) {
+          await conn.sendMessage(id, { text: `${err}` })
+        } else {
+          try {
+            const data = await toMp3("gif.mp4")
+            await conn.sendMessage(id, { sticker: { url: data } })
+          } catch (e) {
+            await conn.sendMessage(id, { text: `${e}` })
+          } finally {
+            await cleanupFiles()
+          }
+        }
+      })
+    } else {
+      await m.reply(id, "MediaType not mached")
+    }
+  } else {
+    await m.reply(id, "Buffer not getting")
+  }
+
 }
 
 handler.cmd = /^(s|stiker|scv)$/i
