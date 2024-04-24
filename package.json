@@ -33,5 +33,8 @@
     "qrcode": "^1.5.3",
     "qrcode-reader": "^1.0.4",
     "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^4.1.0"
   }
 }

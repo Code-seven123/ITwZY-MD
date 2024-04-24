@@ -4,3 +4,5 @@ temp/
 sessions
 .eslintrc.cjs
 store.json
+**/*-full.js
+.obus
