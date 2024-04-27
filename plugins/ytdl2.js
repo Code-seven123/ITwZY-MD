@@ -59,7 +59,7 @@ handler.answer = async(data, conn, { commandName, args, id }, m) => {
 
 handler.cmd = /^(ytdl2|yt2)$/i
 handler.desc = "type : audio or video"
-handler.category = "utility"
+handler.category = "download"
 handler.args = "<url> + <type>"
 handler.answerCommand = /^(down)$/i
 

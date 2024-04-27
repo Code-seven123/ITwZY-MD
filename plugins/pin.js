@@ -19,7 +19,7 @@ const handler = async (conn, { id, reply, storage }, m) => {
 
 handler.cmd = /^(pin|unpin)$/i
 handler.desc = "pin unpin message"
-handler.category = ""
+handler.category = "group"
 handler.admin = true
 
 

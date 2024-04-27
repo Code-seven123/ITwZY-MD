@@ -1,9 +1,13 @@
-import { downloadMediaMessage } from "@whiskeysockets/baileys"
+import {
+  downloadMediaMessage,
+  downloadContentFromMessage
+} from "@whiskeysockets/baileys"
 import ffmpeg from "fluent-ffmpeg"
 import MAIN_LOGGER from "../lib/logger.js"
 import fs from "fs"
 import { fileURLToPath } from "url"
 import { dirname, join } from "path"
+import { inspect } from 'util'
 
 const logger = MAIN_LOGGER.child({})
 
@@ -48,28 +52,21 @@ const handler = async (conn, { id }, m) => {
   if(messageType === "extendedTextMessage"){
     const quotedMessage = m.message?.extendedTextMessage?.contextInfo?.quotedMessage
     const qutedGif = Object.keys(quotedMessage?.videoMessage|| { text: "undefined" })
-    console.log('Quoted message ', quotedMessage)
     if(Object.keys(quotedMessage)[0] === "imageMessage"){
-      mediaBuffer = await downloadMediaMessage(
-        quotedMessage,
-        "buffer",
-        {},
-        {
-          logger,
-          reuploadRequest: conn.updateMediaMessage
-        }
-      )
+      const stream = await downloadContentFromMessage(quotedMessage?.imageMessage, "image")
+      let buffer = Buffer.from([])
+      for await ( const chunk of stream ){
+        buffer = Buffer.concat([buffer, chunk])
+      }
+      mediaBuffer = buffer
       mediaType = "image"
     } else if(Object.keys(quotedMessage)[0] === "videoMessage" && qutedGif.includes("gifAttribution")) {
-      mediaBuffer = await downloadMediaMessage(
-        quotedMessage,
-        "buffer",
-        {},
-        {
-          logger,
-          reuploadRequest: conn.updateMediaMessage
-        }
-      )
+      const stream = await downloadContentFromMessage(quotedMessage?.videoMessage, "video")
+      let buffer = Buffer.from([])
+      for await ( const chunk of stream ){
+        buffer = Buffer.concat([buffer, chunk])
+      }
+      mediaBuffer = buffer
       mediaType = "video"
     } else {
       await m.reply(id, "Quoted message not image or gif")
