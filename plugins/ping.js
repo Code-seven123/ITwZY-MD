@@ -13,7 +13,7 @@ function frontText(text) {
   return st + end
 }
 
-const handler = async (conn, { user, id }, m) => {
+const handler = async (conn, { user, id, storage }, m) => {
   const txt = `Testing system\n\n\n`
     + `🔴Ram: ${toGb(os.totalmem())} / ${toGb(os.totalmem() - os.freemem())}\n`
     + `🟢Free Ram: ${toGb(os.freemem())}\n`
