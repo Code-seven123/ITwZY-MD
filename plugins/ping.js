@@ -14,7 +14,7 @@ function frontText(text) {
 }
 
 const handler = async (conn, { user, id, storage, personalId }, m) => {
-  const contact = storage.contacts[personalId]
+  const contact = storage.chats
   console.log(contact)
   const txt = `Testing system\n\n\n`
     + `🔴Ram: ${toGb(os.totalmem())} / ${toGb(os.totalmem() - os.freemem())}\n`
