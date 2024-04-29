@@ -1,7 +1,7 @@
 import {
   downloadMediaMessage,
   downloadContentFromMessage
-} from "@whiskeysockets/baileys"
+} from "baileys"
 import ffmpeg from "fluent-ffmpeg"
 import MAIN_LOGGER from "../lib/logger.js"
 import fs from "fs"
@@ -139,7 +139,7 @@ const handler = async (conn, { id }, m) => {
 
 handler.cmd = /^(s|stiker|scv)$/i
 handler.desc = "sticker maker"
-handler.category = "utility"
+handler.category = "tools"
 handler.args = null
 
 export default handler

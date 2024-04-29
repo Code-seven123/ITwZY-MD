@@ -30,6 +30,6 @@ handler.cmd = /^(shorturl|urlshorteners)$/i
 
 handler.desc = "URL Shorteners by cleanuri"
 
-handler.category = "utility"
+handler.category = "tools"
 
 export default handler

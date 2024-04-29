@@ -2,7 +2,7 @@ import ffmpeg from "fluent-ffmpeg"
 import fs from "fs"
 import { fileURLToPath } from "url"
 import { dirname, join } from "path"
-import { downloadMediaMessage, downloadContentFromMessage } from "@whiskeysockets/baileys"
+import { downloadMediaMessage, downloadContentFromMessage } from "baileys"
 import MAIN_LOGGER from "../lib/logger.js"
 
 const logger = MAIN_LOGGER.child({})
@@ -36,8 +36,8 @@ async function cleanupFiles() {
   }
 }
 
-const getFileBuffer = async (mediakey, mimetype) => {
-  const stream = await downloadContentFromMessage(mediakey, mimetype)
+const getFileBuffer = async (quotedMessage) => {
+  const stream = await downloadContentFromMessage(quotedMessage, "buffer")
   let buffer = Buffer.from([])
   for await (const chunk of stream) {
     buffer = Buffer.concat([buffer, chunk])
@@ -58,7 +58,7 @@ async function bufferDownload(m){
     )
     return buffer
   } else {
-    const buff = await getFileBuffer(m.message.extendedTextMessage.contextinfo.quotedMessage.videoMessage, "video/mp4")
+    const buff = await getFileBuffer(m.message.extendedTextMessage.contextinfo.quotedMessage.videoMessage)
     console.log("Quoted message")
     return buff
   }
@@ -92,6 +92,6 @@ const handler = async (conn, { id }, m) => {
 
 handler.cmd = /^(tomp3)$/i
 handler.desc = "convert mp4 to mp3"
-handler.category = "utility"
+handler.category = "editor"
 
 export default handler

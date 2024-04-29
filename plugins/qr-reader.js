@@ -1,5 +1,5 @@
 import MAIN_LOGGER from '../lib/logger.js'
-import { downloadMediaMessage } from "@whiskeysockets/baileys"
+import { downloadMediaMessage } from "baileys"
 import QRCodeReader from 'qrcode-reader'
 import Jimp from 'jimp'
 
@@ -37,7 +37,7 @@ const handler = async (conn, { id, args }, m) => {
 
 handler.cmd = /^(parseqr|qrencode)$/i
 handler.desc = "Qr code reader"
-handler.category = "utility"
+handler.category = "tools"
 
 
 export default handler

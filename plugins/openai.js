@@ -30,7 +30,7 @@ const handler = async (conn, { args, id }, m) => {
 
 handler.cmd = /^(tanyaai|ai|how)$/i
 handler.desc = "chat gpt command"
-handler.category = "utility"
+handler.category = "tools"
 handler.args = "<question>"
 
 export default handler

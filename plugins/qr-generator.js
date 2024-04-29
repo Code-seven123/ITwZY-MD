@@ -12,7 +12,7 @@ const handler = async (conn, { id, args }, m) => {
 
 handler.cmd = /^(makeqr|qr)$/i
 handler.desc = "Qr code generator"
-handler.category = "utility"
+handler.category = "tools"
 handler.args = "<teks / url>"
 
 

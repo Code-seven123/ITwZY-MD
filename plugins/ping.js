@@ -3,7 +3,7 @@ import { botName } from '../lib/config.js'
 import fs from 'fs'
 import { join } from 'path'
 import { __dirname } from '../lib/utils.js'
-
+import { inspect } from 'util'
 function toGb(byte){
   return (byte / (1024 * 1024 * 1024)).toFixed(1)
 }
@@ -13,7 +13,9 @@ function frontText(text) {
   return st + end
 }
 
-const handler = async (conn, { user, id, storage }, m) => {
+const handler = async (conn, { user, id, storage, personalId }, m) => {
+  const contact = storage.contacts[personalId]
+  console.log(contact)
   const txt = `Testing system\n\n\n`
     + `🔴Ram: ${toGb(os.totalmem())} / ${toGb(os.totalmem() - os.freemem())}\n`
     + `🟢Free Ram: ${toGb(os.freemem())}\n`

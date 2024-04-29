@@ -6,3 +6,5 @@ sessions
 store.json
 **/*-full.js
 .obus
+package-lock.json
+yarn.lock
