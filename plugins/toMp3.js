@@ -2,7 +2,7 @@ import ffmpeg from "fluent-ffmpeg"
 import fs from "fs"
 import { fileURLToPath } from "url"
 import { dirname, join } from "path"
-import { downloadMediaMessage, downloadContentFromMessage } from "baileys"
+import { downloadMediaMessage, downloadContentFromMessage } from "@whiskeysockets/baileys"
 import MAIN_LOGGER from "../lib/logger.js"
 
 const logger = MAIN_LOGGER.child({})

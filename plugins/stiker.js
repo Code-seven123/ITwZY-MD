@@ -1,7 +1,7 @@
 import {
   downloadMediaMessage,
   downloadContentFromMessage
-} from "baileys"
+} from "@whiskeysockets/baileys"
 import ffmpeg from "fluent-ffmpeg"
 import MAIN_LOGGER from "../lib/logger.js"
 import fs from "fs"

@@ -1,4 +1,4 @@
-import baileys from "baileys"
+import baileys from "@whiskeysockets/baileys"
 const handler = async (conn, { id, reply, storage }, m) => {
   const userId = reply?.remoteJid
   const messageId = reply?.id

@@ -1,4 +1,4 @@
-import baileys from 'baileys'
+import baileys from '@whiskeysockets/baileys'
 import { inspect } from 'util'
 
 const handler = async (conn, config, m) => {
