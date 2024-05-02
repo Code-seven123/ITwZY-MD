@@ -12,7 +12,8 @@
   "directories": {
     "lib": "lib",
     "src": "src",
-    "plugins": "plugins"
+    "plugins": "plugins",
+    "permissions": "permissions"
   },
   "keywords": [
     "termux-whatsapp-bot",
