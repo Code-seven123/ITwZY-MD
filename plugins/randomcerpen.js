@@ -1,4 +1,4 @@
-import { Cerpen } from 'dhn-api'
+import { Cerpen } from "dhn-api"
 const handler = async (conn, { id }, m) => {
   const data = await Cerpen()
   await conn.sendMessage(id, { text: data })

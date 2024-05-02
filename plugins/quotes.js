@@ -1,4 +1,4 @@
-import { Quotes } from 'dhn-api'
+import { Quotes } from "dhn-api"
 const handler = async (conn, { id, reply }, m) => {
   const data = await Quotes()
   await conn.sendMessage(id, { text: `${data.quotes} \nBy ${data?.author}` })

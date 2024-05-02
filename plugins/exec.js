@@ -1,9 +1,9 @@
-import baileys from '@whiskeysockets/baileys'
-import { inspect } from 'util'
+import baileys from "@whiskeysockets/baileys"
+import { inspect } from "util"
 
 const handler = async (conn, config, m) => {
   const { id, args, reply, storage} = config
-  const text = args.join(' ')
+  const text = args.join(" ")
   try {
     const result = await eval(`(async () => { ${text} })()`)
     console.log(result)

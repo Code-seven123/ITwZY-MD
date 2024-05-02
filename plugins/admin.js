@@ -5,9 +5,9 @@ const handler = async (conn, { user, id, args, group }, m) => {
       const response = await conn.groupParticipantsUpdate(
         id,
         [result?.jid],
-        (args[0] === 'promote') ? "promote" : "demote"
+        (args[0] === "promote") ? "promote" : "demote"
       )
-      await conn.sendMessage(id, { text: `User $${args[0]} ${(args[0] === 'promote') ? "promote" : "demote"} from groip`, mentions: [result?.jid]})
+      await conn.sendMessage(id, { text: `User $${args[0]} ${(args[0] === "promote") ? "promote" : "demote"} from groip`, mentions: [result?.jid]})
     } else {
       await m.reply(id, "Argument 1 and 2 not found")
     }

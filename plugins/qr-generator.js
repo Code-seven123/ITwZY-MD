@@ -1,8 +1,8 @@
-import qr from 'qrcode'
+import qr from "qrcode"
 
 const handler = async (conn, { id, args }, m) => {
-  await m.reply(id, 'Generate QR code...')
-  qr.toBuffer(args.join(' '), { scale: 10 }, async (err, buffer) => {
+  await m.reply(id, "Generate QR code...")
+  qr.toBuffer(args.join(" "), { scale: 10 }, async (err, buffer) => {
     if(err) {
       await m.reply(id, `Error generate: ${err}`)
     }

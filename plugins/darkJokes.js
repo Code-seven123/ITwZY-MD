@@ -1,4 +1,4 @@
-import { Darkjokes } from 'dhn-api'
+import { Darkjokes } from "dhn-api"
 const handler = async (conn, { id, reply }, m) => {
   const data = await Darkjokes()
   await conn.sendMessage(id, { image: { url: data } })

@@ -7,7 +7,7 @@ import MAIN_LOGGER from "../lib/logger.js"
 import fs from "fs"
 import { fileURLToPath } from "url"
 import { dirname, join } from "path"
-import { inspect } from 'util'
+import { inspect } from "util"
 
 const logger = MAIN_LOGGER.child({})
 

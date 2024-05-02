@@ -1,5 +1,5 @@
-import fetch from 'node-fetch'
-import { randomInt } from '../lib/utils.js'
+import fetch from "node-fetch"
+import { randomInt } from "../lib/utils.js"
 
 async function gacha(args){
   const apiUrl = "https://api.waifu.im/search"
@@ -13,13 +13,13 @@ async function gacha(args){
   for ( const key in params ){
     URLparams.append(key, params[key])
   }
-  const headers = new Headers();
-  headers.append('Accept-Version', 'v5');
+  const headers = new Headers()
+  headers.append("Accept-Version", "v5")
 
 
   const api = await fetch(`${apiUrl}?${URLparams.toString()}`, { headers })
   const result = await api.json()
-  if('detail' in result) return { text: result.detail }
+  if("detail" in result) return { text: result.detail }
   const no = (result?.images.length === 1) ? 0 : randomInt(0, result?.images?.length)
   const data = result?.images[no]
   console.log(URLparams.toString())
@@ -29,12 +29,12 @@ async function gacha(args){
   }
   return {
     image: { url: data?.url },
-    caption: `URL: ${data?.url}\nArtist: ${data?.artist?.name}\nSource: ${data?.source}\nTags: ${tags.join(', ')}`
+    caption: `URL: ${data?.url}\nArtist: ${data?.artist?.name}\nSource: ${data?.source}\nTags: ${tags.join(", ")}`
   }
 }
 
 const handler = async (conn, { id, args }, m) => {
-  await m.reply(id, 'Getting data...')
+  await m.reply(id, "Getting data...")
   try {
     const data = await gacha(args)
     await conn.sendMessage(id, data, { quoted: m })

@@ -1,7 +1,7 @@
 {
   "name": "itwzy-v2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Wa bot by baileys. bot utility and tools",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,33 @@
     "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "directories": {
+    "lib": "lib",
+    "src": "src",
+    "plugins": "plugins"
+  },
+  "keywords": [
+    "termux-whatsapp-bot",
+    "whatsapp-bot",
+    "whatsapp",
+    "Misaki-bot",
+    "js-whatsapp",
+    "whatsapp",
+    "ITwZY",
+    "wabot-aq",
+    "multi-device",
+    "MD",
+    "baileys-md"
+  ],
+  "homepage": "https://github.com/Code-seven123/ITwZY-MD",
+  "bugs": {
+    "url": "https://github.com/Code-seven123/ITwZY-MD/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Code-seven123/ITwZY-MD.git"
+  },
+  "author": "Code-seven123",
   "license": "ISC",
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
