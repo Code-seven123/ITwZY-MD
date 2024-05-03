@@ -3,7 +3,7 @@ import { limit } from '../lib/config.js'
 const handler = async (conn, { id, adminControl, personalId, args}, m) => {
    const user = await conn.onWhatsApp(args[0].slice(1))
 
-   if(user !== undefined){
+   if(args[0] !== undefined && args[0] !== null){
      const data = adminControl.penalti[user[0].jid]
      await m.reply(id, `Your limit ${limit - data?.count}`)
    } else {
