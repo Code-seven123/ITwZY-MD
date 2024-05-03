@@ -1,8 +1,9 @@
 import { limit } from '../lib/config.js'
 
 const handler = async (conn, { id, adminControl, personalId, args}, m) => {
-   const data = adminControl.penalti[personalId]
-   await m.reply(id, `Your limit ${limit - data?.count}`)
+   const data = adminControl.penalti[personalId] || { count: "Not found" }
+   const freeLimit = limit - data?.count <= 0 ? 0 : limit - data?.count
+   await m.reply(id, `Your limit ${freeLimit}`)
 }
 
 handler.cmd = /^(limit)$/i
