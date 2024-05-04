@@ -24,7 +24,7 @@ async function gacha(args){
   const data = result?.images[no]
   console.log(URLparams.toString())
   const tags = []
-  for( const tag of data?.tags ){
+  for( const tag of data.tags ){
     tags.push(tag?.name)
   }
   return {
@@ -44,7 +44,7 @@ const handler = async (conn, { id, args }, m) => {
 }
 
 handler.cmd = /^(anime)$/i
-handler.desc = "*waifu by tags*, \nTags information\n18+ content tags : \n- ero\n- ass\n- hentai\n- milf\n- oral\n- paizuri\n- ecchi\n\Not 18+ content tags :\n- waifu\n\- maid\n- marin-kitagawa\n- mori-calliope\n- raiden-shogun\n- oppai\n- selfies\n- uniform\n- kamisato-ayaka"
+handler.desc = "*waifu by tags*, \nTags information\n18+ content tags : \n- ero\n- ass\n- hentai\n- milf\n- oral\n- paizuri\n- ecchi\nNot 18+ content tags :\n- waifu\n maid\n- marin-kitagawa\n- mori-calliope\n- raiden-shogun\n- oppai\n- selfies\n- uniform\n- kamisato-ayaka"
 handler.category = "anime"
 handler.args = "<tags>"
 

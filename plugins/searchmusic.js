@@ -14,7 +14,7 @@ const handler = async (conn, { id, args }, m) => {
       const label = music?.duration.label
       const album = music?.album
       const artists = []
-      for( const art of music?.artists ) {
+      for( const art of music.artists ) {
         artists.push(`- ${art.name}`)
       }
       data.push(`*No*: ${no}\n*Youtube ID*: ${ytid}\n*Title Music*: ${title}\n*artists*: \n${artists.join("\n")}\n*Album*: ${album}\n*Duration*: ${label}\n`)

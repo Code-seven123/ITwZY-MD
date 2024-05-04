@@ -76,10 +76,7 @@ const handler = async (conn, { id }, m) => {
           const data = await toMp3()
           console.log(data)
           const outBuffer = fs.readFileSync(data)
-          await conn.sendMessage(id, { 
-          	audio: outBuffer,
-          	mimetype: "audio/mpeg"
-          })
+          await conn.sendMessage(id, { audio: outBuffer,mimetype: "audio/mpeg" })
         } catch (err) {
           conn.sendMessage(id, { text: `Error converting video to audio: ${err}` })
         } finally {
