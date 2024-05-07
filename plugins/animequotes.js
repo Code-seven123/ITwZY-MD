@@ -15,6 +15,6 @@ handler.cmd = /^(animequotes)$/i
 
 handler.desc = "quotes from anime"
 
-handler.category = "anime"
+handler.category = "words"
 
 export default handler

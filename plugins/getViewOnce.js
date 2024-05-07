@@ -10,14 +10,14 @@ async function downloadMedia(msg){
     for await ( const chunk of stream ){
       buffer = Buffer.concat([buffer, chunk])
     }
-    return { image: buffer, caption: `succes getting content\n ${msg?.imageMessage?.caption || ''}` }
+    return { image: buffer, caption: `succes getting content\n ${msg?.imageMessage?.caption || ""}` }
   } else if(keys[0] === "videoMessage"){
     const stream = await downloadContentFromMessage(msg?.videoMessage, "video")
     let buffer = Buffer.from([])
     for await ( const chunk of stream ){
       buffer = Buffer.concat([buffer, chunk])
     }
-    return { video: buffer, caption: `succes geting content\n ${msg?.videoMessage?.caption || ''}` }
+    return { video: buffer, caption: `succes geting content\n ${msg?.videoMessage?.caption || ""}` }
   } else {
     return false
   }

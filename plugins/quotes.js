@@ -8,6 +8,6 @@ const handler = async (conn, { id, reply }, m) => {
 handler.cmd = /^(quotes|quote)$/i
 
 handler.desc = "Quotes"
-handler.category = "fun"
+handler.category = "words"
 
 export default handler
