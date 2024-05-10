@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import fetch from "node-fetch"
 
 const handler = async (conn, { commandName, id }, m) => {
   const words = ["waifu", "neko", "trap", "blowjob"]
@@ -13,8 +13,8 @@ const handler = async (conn, { commandName, id }, m) => {
 }
 
 handler.cmd = /^(waifu18|neko18|trap18|blowjob18)$/i
-handler.desc = 'gacha waifu'
-handler.category = 'anime18'
+handler.desc = "gacha waifu"
+handler.category = "anime18"
 handler.admin = true
 
 export default handler
