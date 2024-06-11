@@ -3,7 +3,7 @@ node_modules
 temp/
 sessions
 store.json
-#**/*-full.js
+**/*-full.js
 .obus
 package-lock.json
 yarn.lock
