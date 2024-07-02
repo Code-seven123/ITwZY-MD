@@ -20,7 +20,7 @@ const handler = async (conn, config, m) => {
   }
 }
 
-handler.cmd = /^(==>)$/i
+handler.cmd = /^(>)$/i
 handler.desc = "execution baileys, Variable :\nsocket as `conn`,\nmessage as `m`, \nbaileys as `baileys`, \nstore(makeInMemoryStore()) as `storage`, \nconfiguration as `config`"
 handler.category = "utility"
 handler.args = "<command>"

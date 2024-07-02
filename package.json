@@ -41,7 +41,7 @@
   "dependencies": {
     "@bochilteam/scraper": "^4.2.4",
     "@hapi/boom": "^10.0.1",
-    "@whiskeysockets/baileys": "^6.7.4",
+    "@whiskeysockets/baileys": "^6.7.5",
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
     "dhn-api": "^1.1.3",

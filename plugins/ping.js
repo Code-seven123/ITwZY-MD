@@ -2,7 +2,7 @@ import os from "os"
 import { botName } from "../lib/config.js"
 import fs from "fs"
 import { join } from "path"
-import { __dirname } from "../lib/utils.js"
+import { __dirname, run } from "../lib/utils.js"
 
 function toGb(byte){
   return (byte / (1024 * 1024 * 1024)).toFixed(1)
@@ -14,6 +14,8 @@ function frontText(text) {
 }
 
 const handler = async (conn, { user, id, storage, personalId }, m) => {
+  const ping = await run("python speed.py | sed -n 'ʜᴏsᴛᴇᴅ ʙʏ :,📤 ᴜᴘʟᴏᴀᴅ:p'")
+  console.log(ping)
   const txt = "Testing system\n\n\n"
     + `🔴Ram: ${toGb(os.totalmem())} / ${toGb(os.totalmem() - os.freemem())}\n`
     + `🟢Free Ram: ${toGb(os.freemem())}\n`

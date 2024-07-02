@@ -21,10 +21,14 @@ const handler = async (conn, { args, id }, m) => {
     body: JSON.stringify(body)
   })
   const completion = await res.json()
-  for( const result of completion.choices ){
-    const msgResult = result?.message?.content
-    const role = result?.message?.role
-    await conn.sendMessage(id, { text: "`" + role.toUpperCase() + "` \n" + msgResult }, { quoted: m })
+  if(completion?.choices != undefined) {
+    for( const result of completion.choices ){
+      const msgResult = result?.message?.content | completion?.error?.message
+      const role = result?.message?.role | ""
+      await conn.sendMessage(id, { text: "`" + role.toUpperCase() + "` \n" + msgResult }, { quoted: m })
+    }
+  } else {
+    await conn.sendMessage(id, { text: completion?.error?.message }, { quoted: m })
   }
 }
 
