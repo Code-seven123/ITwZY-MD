@@ -6,3 +6,5 @@ store.json
 .obus
 package-lock.json
 yarn.lock
+.eslintignore
+.eslintrc.cjs
