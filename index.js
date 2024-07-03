@@ -3,7 +3,24 @@ import isOnline from "is-online"
 import fs from "fs"
 import nodemon from "nodemon"
 import process from "process"
+import http from 'http';
 
+// Port tempat server akan berjalan
+const PORT = process.env.PORT || 8000;
+
+// Handler untuk melayani permintaan HTTP
+const requestHandler = (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Bot starting');
+};
+
+// Buat server HTTP
+const server = http.createServer(requestHandler);
+
+// Mendengarkan port yang ditentukan
+server.listen(PORT, () => {
+  console.log(`Server berjalan di http://%:${PORT}`);
+});
 const logger = MAIN_LOGGER.child({})
 
 process.on("exit", () => {
