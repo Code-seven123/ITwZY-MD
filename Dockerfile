@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     ffmpeg \
     python3 \
     python3-pip \
-    fortune
+    fortune \
  && rm -rf /var/lib/apt/lists/*
 
 # Menginstal speedtest-cli menggunakan pip
