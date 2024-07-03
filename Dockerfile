@@ -4,7 +4,9 @@ FROM node:latest
 # Menjalankan perintah apt-get update dan menginstal paket-paket yang diperlukan
 RUN apt-get update && apt-get install -y \
     ffmpeg \
-    python \
+    python3 \
+    python3-pip \
+    fortune
  && rm -rf /var/lib/apt/lists/*
 
 # Menginstal speedtest-cli menggunakan pip
