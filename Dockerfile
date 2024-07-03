@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 # Menginstal speedtest-cli menggunakan pip
-RUN pip3 install speedtest-cli
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+RUN pip install speedtest-cli
 
 # Menyalin file package.json dan package-lock.json untuk instalasi dependensi Node.js
 COPY package*.json ./
