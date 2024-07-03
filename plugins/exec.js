@@ -5,6 +5,7 @@ import * as utils from "../lib/utils.js"
 import path from "path"
 
 const handler = async (conn, config, m) => {
+  throw Error("Testing error")
   const { id, args, reply, storage} = config
   const text = args.join(" ")
   try {
@@ -25,6 +26,6 @@ handler.desc = "execution baileys, Variable :\nsocket as `conn`,\nmessage as `m`
 handler.category = "utility"
 handler.args = "<command>"
 handler.admin = true
-
+handler.noPrefix = true
 
 export default handler
