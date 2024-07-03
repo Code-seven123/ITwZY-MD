@@ -21,8 +21,6 @@ COPY package*.json ./
 # Menginstal dependensi Node.js
 RUN npm install
 
-# Menyalin seluruh kode aplikasi ke dalam image Docker
-COPY . .
 
 # Menjalankan perintah npm run start untuk menjalankan aplikasi
 CMD ["npm", "run", "start"]
