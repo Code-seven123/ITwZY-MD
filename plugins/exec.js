@@ -5,7 +5,6 @@ import * as utils from "../lib/utils.js"
 import path from "path"
 
 const handler = async (conn, config, m) => {
-  throw Error("Testing error")
   const { id, args, reply, storage} = config
   const text = args.join(" ")
   try {

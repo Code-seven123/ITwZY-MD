@@ -15,7 +15,7 @@ RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install speedtest-cli
 
-WORKDIR /app
+WORKDIR /appbot
 
 # Menyalin file package.json dan package-lock.json untuk instalasi dependensi Node.js
 COPY package*.json ./
