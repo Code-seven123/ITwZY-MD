@@ -16,7 +16,7 @@ function frontText(text) {
 
 const handler = async (conn, { user, id, storage, personalId, commandName }, m) => {
   if(commandName.toLowerCase() == "test" || commandName.toLowerCase() == "tes") {
-    await conn.sendMessage(id, "testing OK!!!!", { quoted: m })
+    await conn.sendMessage(id, { text: "testing OK!!!!" }, { quoted: m })
   } else {
     const json = await runExec("speedtest-cli --json")
     const speed = JSON.parse(json || {})
