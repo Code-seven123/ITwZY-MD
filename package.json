@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "lint": "eslint --fix --ext .js --ignore-path .gitignore .",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ext .js --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {
@@ -50,8 +51,10 @@
     "fluent-ffmpeg": "^2.1.2",
     "is-online": "^10.0.0",
     "jimp": "^0.16.13",
+    "libsignal-node": "^2.0.1",
     "link-preview-js": "^3.0.5",
     "moment-timezone": "^0.5.45",
+    "mysql2": "^3.10.2",
     "node-cache": "^5.1.2",
     "node-fetch": "^3.3.2",
     "node-youtube-music": "^0.10.3",
