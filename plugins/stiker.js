@@ -82,7 +82,7 @@ const handler = async (conn, { id }, m) => {
       }
     )
     mediaType = "image"
-  } else if(messageType === "videoMessage" && gif.includes("gifAttribution")) {
+  } else if(messageType === "videoMessage") {
     mediaBuffer = await downloadMediaMessage(
       m,
       "buffer",
