@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 
 const handler = async (conn, { id, args}, m) => {
   if(args != null || args != undefined || args != [] || args.length >= 2) {
-    if (["GET", "PUT", "DELETE", "POST"].find(i => i == args[0].toUpperCase()) == undefined) {
+    if (["GET", "PUT", "DELETE", "POST"].find(i => i == args[0]?.toUpperCase()) == undefined) {
       return;
     }
     try {
@@ -15,7 +15,7 @@ const handler = async (conn, { id, args}, m) => {
       const obj = typeof result == "object" ? JSON.stringify(json) : result
       const txt = `Status: ${json?.status}"${json?.statusText}"`
         + `result: \n\n${obj}`
-      await sendMessage(id, { text: txt }, { quoted: m })
+      await conn.sendMessage(id, { text: txt }, { quoted: m })
     } catch(e) {
       await conn.sendMessage(id, { text: `Error fetching ${e?.message}` })
     }
