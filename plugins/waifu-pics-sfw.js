@@ -27,10 +27,7 @@ const handler = async (conn, { id, commandName }, m) => {
     "glomp",
     "slap",
     "kill",
-    "kick",
     "happy",
-    "wink",
-    "poke",
     "dance",
     "cringe"
   ]

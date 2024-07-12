@@ -1,10 +1,13 @@
 node_modules
 .env
 temp/
-sessions
+sessions/
 store.json
 .obus
+store/
 package-lock.json
 yarn.lock
 .eslintignore
 .eslintrc.cjs
+test*
+**/test*

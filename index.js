@@ -5,22 +5,13 @@ import nodemon from "nodemon"
 import process from "process"
 import http from "http"
 
-// Port tempat server akan berjalan
-const PORT = process.env.PORT || 8000
-
-// Handler untuk melayani permintaan HTTP
-const requestHandler = (req, res) => {
+http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": "text/plain" })
   res.end("Bot starting")
-}
-
-// Buat server HTTP
-const server = http.createServer(requestHandler)
-
-// Mendengarkan port yang ditentukan
-server.listen(PORT, () => {
-  console.log(`Server berjalan di http://%:${PORT}`)
+}).listen(process.env.PORT || 8000, () => {
+  console.log(`Server berjalan di http://%:${process.env.PORT || 8000}`)
 })
+
 const logger = MAIN_LOGGER.child({})
 
 process.on("exit", () => {
@@ -29,59 +20,39 @@ process.on("exit", () => {
 
 logger.info("Use 'Ctrl + c' to safely exit the program.")
 console.log("Use 'Ctrl + c' to safely exit the program.")
-const online = await isOnline()
-if(!(online)) {
-  logger.info("You are currently offline.")
-  console.log("You are currently offline.")
-  process.exit()
-} else {
-  logger.info("You are currently online.")
-  console.log("You are currently online.")
+await isOnline().then((online) => {
+  console.log(online ? "Your currenty online" : "your currenty offline")
+  logger.info(online ? "Your currenty online" : "your currenty offline")
+})
+
+const sessions = (process.env.MYSQL == "false") ? "./sessions" : ""
+for( const item of ["./temp", "./store", sessions] ){
+  if(item == "") {
+  } else if(!fs.existsSync(item)) {
+    logger.info(`\"${item}\" not found`)
+    console.log(`\"${item}\" not found`)
+    fs.mkdir(item, { recursive: true }, (err) => {
+      if (err) {
+        logger.error(err, "Failed to create a folder.")
+        console.log(err, "Failed to create a folder.")
+        process.exit(0)
+      } else {
+        logger.info(`Folder "${item}" berhasil dibuat.`)
+        console.log(`Folder "${item}" berhasil dibuat.`)
+      }
+    })
+  } else {
+    logger.info(`\"${item}\" found`)
+    console.log(`\"${item}\" found`)
+  }
 }
   
-if(!(fs.existsSync("./temp"))) {
-  logger.info("temp not found")
-  console.log("temp not found")
-  fs.mkdir("./temp", { recursive: true }, (err) => {
-    if (err) {
-      logger.error(err, "Failed to create a folder.")
-      console.log(err, "Failed to create a folder.")
-      process.exit()
-    } else {
-      logger.info("Folder \"./temp\" berhasil dibuat.")
-      console.log("Folder \"./temp\" berhasil dibuat.")
-    }
-  })
-} else {
-  logger.info("Folder temp found")
-  console.log("Folder temp found")
-}
-
-if(!(fs.existsSync("./sessions"))) {
-  logger.info("sessions not found")
-  console.log("sessions not found")
-  fs.mkdir("./sessions", { recursive: true }, (err) => {
-    if (err) {
-      logger.error(err, "Failed to create a folder.")
-      console.log(err, "Failed to create a folder.")
-      process.exit()
-    } else {
-      logger.info("Folder \"./sessions\" berhasil dibuat.")
-      console.log("Folder \"./sessions\" berhasil dibuat.")
-    }
-  })
-} else { 
-  logger.info("Folder sessions found")
-  console.log("Folder sessions found")
-}
-
-
 async function start(){
   const args = [process.argv.filter(arg => arg.startsWith("--"))]
   nodemon({
     script: "./lib/socket.js", // Your main server file
     ext: "js json", // File extensions to watch
-    ignore: ["node_modules/", "sessions/", "temp/", "store.json"],
+    ignore: ["node_modules/", "sessions/", "temp/", "store/"],
     args: args.flat()
   })
   nodemon.on("start", () => {

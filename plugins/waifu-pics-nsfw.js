@@ -6,7 +6,7 @@ const handler = async (conn, { commandName, id }, m) => {
   const api = await fetch(`https://api.waifu.pics/nsfw/${type}`)
   const data = await api.json()
   if(type == "blowjob"){
-    await conn.sendMessage(id, { video: { url: data.url }}, { quoted: m })
+    await conn.sendMessage(id, { video: { url: data.url }, gifPlayback: true }, { quoted: m })
   } else {
     await conn.sendMessage(id, { image: { url: data.url } }, { quoted: m })
   }
