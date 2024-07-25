@@ -12,7 +12,7 @@ const handler = async (conn, { id, args}, m) => {
         headers: args[2] == null || undefined ? {} : args[2]
       })
       const result = await json.json()
-      const obj = typeof result == "object" ? JSON.stringify(json) : result
+      const obj = typeof result == "object" ? JSON.stringify(result) : result
       const txt = `Status: ${json?.status}"${json?.statusText}"`
         + `result: \n\n${obj}`
       await conn.sendMessage(id, { text: txt }, { quoted: m })
