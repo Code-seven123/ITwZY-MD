@@ -40,9 +40,9 @@
   "author": "Code-seven123",
   "license": "ISC",
   "dependencies": {
-    "@bochilteam/scraper": "^4.2.4",
+    "@google/generative-ai": "^0.21.0",
     "@hapi/boom": "^10.0.1",
-    "@whiskeysockets/baileys": "^6.7.5",
+    "@whiskeysockets/baileys": "^6.7.9",
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
     "dhn-api": "^1.1.3",
