@@ -4,13 +4,16 @@ import fs from "fs"
 import nodemon from "nodemon"
 import process from "process"
 import http from "http"
+import { useHttpServer } from "./lib/config.js"
 
-http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" })
-  res.end("Bot starting")
-}).listen(process.env.PORT || 8000, () => {
-  console.log(`Server berjalan di http://%:${process.env.PORT || 8000}`)
-})
+if(useHttpServer == true) {
+  http.createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" })
+    res.end("Bot starting")
+  }).listen(process.env.PORT || 8000, () => {
+    console.log(`Server berjalan di http://%:${process.env.PORT || 8000}`)
+  })
+}
 
 const logger = MAIN_LOGGER.child({})
 
