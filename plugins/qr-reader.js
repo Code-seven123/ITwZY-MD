@@ -1,7 +1,7 @@
 import MAIN_LOGGER from "../lib/logger.js"
 import { downloadMediaMessage, downloadContentFromMessage } from "@whiskeysockets/baileys"
 import QRCodeReader from "qrcode-reader"
-import Jimp from "jimp"
+import * as Jimp from "jimp"
 
 const logger = MAIN_LOGGER.child({})
 const handler = async (conn, { id, args }, m) => {

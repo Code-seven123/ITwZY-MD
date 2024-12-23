@@ -11,3 +11,4 @@ yarn.lock
 .eslintrc.cjs
 test*
 **/test*
+wa-logs*
